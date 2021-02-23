@@ -64,7 +64,7 @@ from utilities import gettime_ntp
 
 # pipeline repo
 rmp_path = os.path.join("recountmethylation.pipeline", "inst", 
-    "scripts", "snakemake")
+    "snakemake")
 
 # research synth resources repo
 rsynth_path = os.path.join("recount.synth", "inst", 
@@ -137,10 +137,10 @@ rule apply_jsonfilt:
     log: os.path.join(logspath, "apply_jsonfilt_"+ts+".log")
     shell: "Rscript {input} > {log}"
 
-rule soft_cleanup:
-    input: os.path.join(srcpath, "process_soft.py")
-    log: os.path.join(logspath, "soft_cleanup_"+ts+".log")
-    shell: "python3 {input} --cleanup True  > {log}"
+#rule soft_cleanup:
+#    input: os.path.join(srcpath, "process_soft.py")
+#    log: os.path.join(logspath, "soft_cleanup_"+ts+".log")
+#    shell: "python3 {input} --cleanup True  > {log}"
 
 rule report:
     input: os.path.join(srcpath, "report.py")
@@ -206,7 +206,7 @@ rule get_h5se_gr:
 #------------------------
 # NOTE: Rules to extract and map sample metadata
 rule run_msrap:
-    input: os.path.join(rsynth_path, "run_msrap.R")
+    input: os.path.join(srcpath, "run_msrap.R")
     shell: "Rscript {input}"
 
 # map and harmonize metadata from filtered JSON files
