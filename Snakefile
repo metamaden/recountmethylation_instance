@@ -62,8 +62,12 @@ else:
 sys.path.insert(0, srcpath)
 from utilities import gettime_ntp
 
-# rmpipeline info
-rmp_path = os.path.join("rmpipeline", "inst", 
+# pipeline repo
+rmp_path = os.path.join("recountmethylation.pipeline", "inst", 
+    "scripts", "snakemake")
+
+# research synth resources repo
+rsynth_path = os.path.join("recount.synth", "inst", 
     "scripts", "snakemake")
 
 # logs info
@@ -105,6 +109,7 @@ print("New timestamp for run: "+ts)
 
 rule set_acc:
     input: os.path.join(srcpath, "set_acc.py")
+    log: os.path.join(logspath, "set_acc_"+ts+".log")
     shell: "python3 {input}"
 
 rule run_server:
@@ -125,17 +130,17 @@ rule make_idat_hlinks:
 rule process_soft:
     input: os.path.join(srcpath, "process_soft.py")
     log: os.path.join(logspath, "process_soft_"+ts+".log")
-    shell: "python3 {input} --expand True --gsmextract True --soft2json True > {log}"
+    shell: "python3 {input} > {log}"
 
-rule apply_json_filt:
-    input: os.path.join(srcpath, "json_filt.R")
-    log: os.path.join(logspath, "json_filt_"+ts+".log")
+rule apply_jsonfilt:
+    input: os.path.join(srcpath, "jsonfilt.R")
+    log: os.path.join(logspath, "apply_jsonfilt_"+ts+".log")
     shell: "Rscript {input} > {log}"
 
 rule soft_cleanup:
     input: os.path.join(srcpath, "process_soft.py")
     log: os.path.join(logspath, "soft_cleanup_"+ts+".log")
-    shell: "exec &> >(logger -t myscript -s) | python3 {input} --cleanup True  > {log}"
+    shell: "python3 {input} --cleanup True  > {log}"
 
 rule report:
     input: os.path.join(srcpath, "report.py")
@@ -201,25 +206,25 @@ rule get_h5se_gr:
 #------------------------
 # NOTE: Rules to extract and map sample metadata
 rule run_msrap:
-    input: os.path.join(rmp_path, "run_msrap.R")
+    input: os.path.join(rsynth_path, "run_msrap.R")
     shell: "Rscript {input}"
 
 # map and harmonize metadata from filtered JSON files
 rule do_mdmap:
-    input: os.path.join(rmp_path, "do_mdmap.R")
+    input: os.path.join(rsynth_path, "do_mdmap.R")
     shell: "Rscript {input}"
 
 # get dnam-derived md and qc metrics
 rule do_dnam_md:
-    input: os.path.join(rmp_path, "make_dnam_md.R")
+    input: os.path.join(rsynth_path, "make_dnam_md.R")
     shell: "Rscript {input}"
 
 # get composite md from mdfinal, mdpred, mdqc
 rule make_md_final:
-    input: os.path.join(rmp_path, "make_md_final.R")
+    input: os.path.join(rsynth_path, "make_md_final.R")
     shell: "Rscript {input}"
 
 # append updated md to available compilation files
 rule append_md:
-    input: os.path.join(rmp_path, "append_md.R")
+    input: os.path.join(rsynth_path, "append_md.R")
     shell: "Rscript {input}"
