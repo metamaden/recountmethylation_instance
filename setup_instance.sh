@@ -6,6 +6,8 @@
 # the instance.
 #
 
+setupscriptspath=./inst/setup/
+
 git clone https://github.com/metamaden/recountmethylation_server
 git clone https://github.com/metamaden/recountmethylation.pipeline
 git clone https://github.com/metamaden/recount.synth
@@ -29,13 +31,13 @@ python2 -m pip install dill
 python2 -m pip install nltk
 
 # get punkt for nltk
-python2 ./setup_scripts/punkt_setup.py
+python2 $setupscriptspath"punkt_setup.py"
 
 # setup up MetaSRA-pipeline
-sh ./setup_scripts/msrap_setup.sh
+sh $setupscriptspath"msrap_setup.sh"
 
 # run R setup
-Rscript ./setup_scripts/r_setup.R
+Rscript $setupscriptspath"r_setup.R"
 
 # test installations
-python3 ./recountmethylation_server/src/start_server.py
+# python3 ./recountmethylation_server/src/start_server.py
