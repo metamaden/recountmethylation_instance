@@ -16,10 +16,10 @@ conda install -c bioconda bioconductor-biocinstaller
 #-----------------------
 # clone dependency repos
 #-----------------------
-conda git clone https://github.com/metamaden/recountmethylation_instance
-conda git clone https://github.com/metamaden/recountmethylation_server
-conda git clone https://github.com/metamaden/recountmethylation.pipeline
-conda git clone https://github.com/metamaden/MetaSRA-pipeline
+git clone https://github.com/metamaden/recountmethylation_instance
+git clone https://github.com/metamaden/recountmethylation_server
+git clone https://github.com/metamaden/recountmethylation.pipeline
+git clone https://github.com/metamaden/MetaSRA-pipeline
 #conda git clone https://github.com/metamaden/recount.synth
 
 #-----------------
@@ -28,38 +28,51 @@ conda git clone https://github.com/metamaden/MetaSRA-pipeline
 # set up environment with python3, R, other dependencies
 conda create -n py3 python=3.7
 conda activate py3
-conda install pymongo celery plotly pandas dash
+conda install pymongo 
+conda install celery 
+conda install plotly 
+conda install pandas 
+conda install dash
 pip install snakemake
 conda install -c anaconda mongodb
+conda install -c anaconda sqlite3
 conda install r=3.6.0
-conda install boost=1.73.0 # required by RSQlite
-# use bioconda to bypass permissions issue
+
+# r lib manual dependency installs
+conda install boost=1.73.0 # RSQLite dependency
+conda install openblas==0.3.7 #  preprocesscore dependency
+
+# use bioconda to bypass permissions issues
+conda install -c bioconda r-xml2 
+conda install -c bioconda r-rlang
+conda install -c bioconda r-nlme
+conda install -c bioconda r-cluster
 conda install -c bioconda bioconductor-biobase
 conda install -c bioconda bioconductor-geoquery
 conda install -c bioconda bioconductor-bumphunter
 conda install -c bioconda bioconductor-genefilter
-conda install -c bioconda r-xml2 
-conda install -c bioconda r-rlang
+
+# BiocManager::install("preprocessCore")
+# BiocManager::install("preprocessCore", configure.args="--disable-threading")
+conda install -c bioconda bioconductor-preprocesscore
+# conda install -c bioconda/label/gcc7 bioconductor-preprocesscore
+conda update curl
 R
 install.packages("BiocManager")
-# main Bioc dependencies
 BiocManager::install("RSQLite")
-# BiocManager::install("Biobase")
 BiocManager::install("SummarizedExperiment")
 BiocManager::install("GenomicFeatures")
 BiocManager::install("AnnotationDbi")
-# BiocManager::install("GEOquery")
-# BiocManager::install("bumphunter")
-# RMI dependencies
-BiocManager::install("rhdf5")
+BiocManager::install("bumphunter")
 BiocManager::install("minfi")
 BiocManager::install("minfiData") 
-BiocManager::install("HDF5Array")
 BiocManager::install("minfiDataEPIC")
+BiocManager::install("rhdf5")
+BiocManager::install("HDF5Array")
 BiocManager::install("data.table")
 
 # get the environment.yml file
-
+conda env export > environment_py3.yml
 
 conda deactivate py3
 
