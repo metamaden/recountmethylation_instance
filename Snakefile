@@ -115,7 +115,7 @@ rule set_acc:
 rule new_eqd:
     input: os.path.join(srcpath, "edirect_query.py")
     log: os.path.join(logspath, "eqd_"+ts+".log")
-    shell "python3 {input}"
+    shell: "python3 {input}"
 
 rule exclude_gsm:
     input: os.path.join(srcpath, "gsm_exclude.py")
