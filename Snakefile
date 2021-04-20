@@ -112,6 +112,16 @@ rule set_acc:
     log: os.path.join(logspath, "set_acc_"+ts+".log")
     shell: "python3 {input}"
 
+rule new_eqd:
+    input: os.path.join(srcpath, "edirect_query.py")
+    log: os.path.join(logspath, "eqd_"+ts+".log")
+    shell "python3 {input}"
+
+rule exclude_gsm:
+    input: os.path.join(srcpath, "gsm_exclude.py")
+    log: os.path.join(logspath, "gsm_exclude_"+ts+".log")
+    shell: "python3 {input}"
+
 rule run_server:
     input: os.path.join(srcpath, "server.py")
     log: os.path.join(logspath, "run_server_"+ts+".log")
