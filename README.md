@@ -53,6 +53,60 @@ conda env create -f environment_rmi.yml
 ## Starting a first-time server run
  
 Workflow functions may be accessed using snakemake and the provided `Snakefile` script.
+
+### Specify target platform
+
+The HM450K platform is presently targeted by default, but this may change. To explicitly set
+the platform to target, run the following:
+
+```
+snakemake --cores 1 set_acc
+```
+
+This produces the dialogue:
+
+```
+(Y/N) Current target platform accession ID is GPL13534.
+Do you want to change the target platform?
+```
+
+Entering `Y` returns:
+
+```
+(1/2/3) Enter the number of the platform to target:
+ 1. HM450K (GPL13534)
+ 2. EPIC/HM850K (GPL21145)
+ 3. HM27K (GPL8490)
+```
+
+Type `1` to specify the HM450K platform.
+
+### Run a new EDirect query
+
+Data files are recognized by queries to the GEO DataSets API using EDirect software. Running a fresh query
+will identify all valid data files for the targeted platform. To do this, enter:
+
+```
+snakemake --cores 1 new_eqd
+```
+
+### Exclude freeze sample IDs
+
+The sample/GSM IDs for the most recently available data freezes are included at `./inst/freeze_gsmv/`.
+Excluding these GSM IDs for this instance will allow us to synchronize the subset of samples available 
+since the latest data freeze (currently: November 7, 2020).
+
+```
+snakemake --cores 1 exclude_gsm
+```
+
+Alternatively, you may provide your own file of GSM IDs to exclude from the instance by providing 2 flags,
+`--fname`, or the name of the file, and `--dapath`, or the path to the directory containing the gsmv file.
+
+```
+snakemake --cores 1 exclude_gsm --fname <FILENAME> --dpath <DIRPATH>
+```
+
 Run this script as follows:
 
 ### Excluding existing samples
