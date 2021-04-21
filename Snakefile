@@ -42,9 +42,7 @@
 #------------------------------
 # Set dependencies, paths, etc.
 #------------------------------
-
 import os, sys, random, string
-
 # Set scripts path
 server_repo_name = "recountmethylation_server"
 server_repo_path = os.path.join(server_repo_name)
@@ -57,29 +55,20 @@ if os.path.isdir(server_repo_path):
         print("Error, couldn't find server src dir at path "+srcpath)
 else:
     print("Error, couldn't find server repo at path "+server_repo_path)
-
 # add server src to path
-sys.path.insert(0, srcpath)
-from utilities import gettime_ntp
-
+sys.path.insert(0, srcpath); from utilities import gettime_ntp
 # pipeline repo
-rmp_path = os.path.join("recountmethylation.pipeline", "inst", 
-    "snakemake")
-
+rmp_path = os.path.join("recountmethylation.pipeline", "inst", "snakemake")
 # research synth resources repo
-rsynth_path = os.path.join("recount.synth", "inst", 
-    "scripts", "snakemake")
-
+rsynth_path = os.path.join("recount.synth", "inst", "scripts", "snakemake")
 # logs info
-logsfn = "snakemakelogs"
-logspath = os.path.join(logsfn)
+logsfn = "snakemakelogs"; logspath = os.path.join(logsfn)
 
 #---------------
 # Manage logging
 #---------------
 if not os.path.isdir(logsfn):
     os.mkdir(logsfn)
-
 if len(os.listdir(logspath)) > 0:
     print("Found "+str(len(os.listdir(logspath)))+" files in logs dir "+
         logspath)
@@ -97,13 +86,11 @@ if len(os.listdir(logspath)) > 0:
 #---------------
 # Get timestamps
 #---------------
-ts = gettime_ntp()
-print("New timestamp for run: "+ts)
+ts = gettime_ntp(); print("New timestamp for run: "+ts)
 
 #-------------------
 # Workflow processes
 #-------------------
-
 # Server processes
 # NOTE: Rules to handle file acquisition and formatting from GEO.
 
@@ -125,7 +112,7 @@ rule exclude_gsm:
 rule run_server:
     input: os.path.join(srcpath, "server.py")
     log: os.path.join(logspath, "run_server_"+ts+".log")
-    shell: "python3 {input} >& {log}"
+    shell: "python3 {input} > {log}"
 
 rule unzip_idats:
     input: os.path.join(srcpath, "process_idats.py")
