@@ -50,7 +50,7 @@ Alternatively, create the environment from the provided `.yml` file:
 conda env create -f environment_rmi.yml
 ```
 
-## Starting a first-time server run
+## First time setup
  
 Workflow functions may be accessed using snakemake and the provided `Snakefile` script.
 
@@ -111,4 +111,29 @@ Writing new filter file:  recount-methylation-files/equery/gsequery_filt.1619031
 
 Functions downstream will now recognize and use the newer version of the file `gsequery_filt.*` according 
 to the newer applied timestamp `1619031416`.
+
+## Running the server
+
+Before we can start downloading public data, we need to run the MongoDB service with sudo access. 
+This can be done with either:
+
+```
+service mongod start
+```
+
+or
+
+```
+sudo service mongod start
+```
+
+Once MongoDB is running, we can initialize the server with:
+
+```
+snakemake --cores 1 run_server
+```
+
+This process should systematically target and download study SOFT files and sample IDAT files, 
+according to the contents of the filtered EDirect query files. Note, you may need to restart the 
+server process periodically if your connection is interrupted, the MongoDB service stops, etc.
 
