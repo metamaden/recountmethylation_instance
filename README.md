@@ -169,10 +169,10 @@ The rules to do this include:
 1. `get_rg_compilations`: Make flat tables containing the Red and Green signal intensities. 
 2. `get_h5db_rg`: Make an HDF5 database `.h5` file containing the Red and Green signal intensities. 
 3. `get_h5se_rg`: Make an HDF5-SummarizedExperiment `h5se` file containing the Red and Green signal intensities
-4a. `get_h5db_gm`: Make an HDF5 database `.h5` file containing the Methylated and Unmethylated signals.
-4b. `get_h5se_gm`: Make an HDF5-SummarizedExperiment `h5se` file containing the Methylated and Unmethylated signals.
-5a. `get_h5db_gr`: Make an HDF5 database `.h5` file containing the Beta-values (DNAm fractions).
-5b. `get_h5se_gr`: Make an HDF5-SummarizedExperiment `h5se` file containing the Beta-values (DNAm fractions).
+4. `get_h5db_gm`: Make an HDF5 database `.h5` file containing the Methylated and Unmethylated signals.
+5. `get_h5se_gm`: Make an HDF5-SummarizedExperiment `h5se` file containing the Methylated and Unmethylated signals.
+6. `get_h5db_gr`: Make an HDF5 database `.h5` file containing the Beta-values (DNAm fractions).
+7. `get_h5se_gr`: Make an HDF5-SummarizedExperiment `h5se` file containing the Beta-values (DNAm fractions).
 
 Note, you can retain any subset of these database files, but you should generally run them successively, 
 as certain database files (e.g. the `RGChannelSet` `h5` and `h5se` files) are required to prepare the 
