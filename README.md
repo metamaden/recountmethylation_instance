@@ -4,8 +4,8 @@
 
 Authors: Sean Maden, Abhi Nellore
 
-Set up and maintain an instance, or synchronization, of public DNAm arrays from 
-the Gene Expression Omnibus (GEO). 
+Set up and maintain an instance, or synchronization, of public DNAm arrays from the Gene Expression Omnibus 
+(GEO). Workflow functions may be accessed using the provided snakemake `Snakefile` script.
 
 # Tutorial
 
@@ -50,9 +50,10 @@ Alternatively, create the environment from the provided `.yml` file:
 conda env create -f environment_rmi.yml
 ```
 
-## First time setup
+## Configuring the instance
  
-Workflow functions may be accessed using snakemake and the provided `Snakefile` script.
+Next, we need to configure the instance, including specifying the array platform to target, and 
+specifying sample IDs to exclude.
 
 ### Specify target platform
 
@@ -137,3 +138,83 @@ This process should systematically target and download study SOFT files and samp
 according to the contents of the filtered EDirect query files. Note, you may need to restart the 
 server process periodically if your connection is interrupted, the MongoDB service stops, etc.
 
+To avoid repeated hanging on corrupt or malformed files, target study/GSE ids are shuffled for
+each `server.py` run.
+
+## Reformatting and compiling data files
+
+Once data files have been downloaded, they can be prepared for compilation.
+
+### Sample IDATs
+
+The sample IDATs are paired files containing red and green signals from the array runs. Thus, two 
+valid IDATs are expected per sample/GSM id, where their filenames end as `.*_Red.idat.*` and `.*_Grn.idat.*`.
+
+Since we download the IDATs as compressed `.gz` files, we need to expand them.
+
+```
+snakemake --cores 1 unzip_idats
+```
+
+Because paired IDATs may have distinct filename timestamps, it is necessary to create hardlinks to ensure 
+timestamps match for sample IDAT pairs.
+
+```
+snakemake --cores 1 make_idat_hlinks
+```
+
+Once the IDATs have been prepared, we can begin to compile them into various database file types.
+The rules to do this include `get_rg_compilations`, `get_h5db_rg`, `get_h5se_rg`, `get_h5db_gm`,
+`get_h5se_gm`, `get_h5db_gr`, and `get_h5se_gr`. 
+
+Note, you can retain any subset of these database files, but you should generally run them successively, 
+as certain database files (e.g. the `RGChannelSet` `h5` and `h5se` files) are required to prepare the 
+other files (e.g. `MethylSet` `h5` and `h5se` files, and `GenomicMethylSet` `h5` and `h5se` files). In 
+other words, regardless of which file type you ultimately use, you'll need to start by preparing the 
+`RGChannelSet` files as follows:
+
+```
+snakemake --cores 1 get_rg_compilations
+snakemake --cores 1 get_h5db_rg
+snakemake --cores 1 get_h5se_rg
+```
+
+For convenience, all of the data compilation steps may be executed successively using the 
+`run_dnam_pipeline` rule.
+
+```
+snakemake --cores 1 run_dnam_pipeline
+```
+
+### Study SOFT files
+
+Sample metadata is contained in the SOFT files. After expanding the `.gz` compressed SOFT files, we need to 
+extract the sample-specific metadata into `.json` files before mapping with either MetaSRA-pipeline or the 
+included mapping scripts. After extraction, the `.json` files are further filtered to remove study-specific 
+metadata.
+
+```
+snakemake --cores 1 process_soft
+snakemake --cores 1 apply_jsonfilt
+```
+
+Once the `.json` files containing sample-specific metadata have been prepared, you have the option of running
+all or only some of the available metadata processing rules. Available rules include:
+
+* do_mdmap: Map and harmonize metadata using the provided scripts. These scripts use regular expressions to 
+            automatically detect and categorize tags in `.json` files, and then to uniformly format and 
+            annotate metadata terms under several columns, including "disease" (e.g. disease condition or 
+            experiment group), "tissue" (e.g. tissue of origin), "age" (chronological age), and "sex" 
+            (provided sex information).
+* run_msrap: Run the MetaSRA-pipeline. This produces sample type predictions, as well as ENCODE ontology terms 
+             from several major ontology dictionaries.
+* do_dnam_md: Get DNAm-derived metadata, including model-based predictions for age, sex, and blood cell type   
+              fractions, and quality metrics, including BeadArray controls and median log2 methylated and    
+              unmethylated signals. This should be run after IDAT compilations are complete.
+              
+Once one or all of these rules have been successfully run, compile and append the harmonized metadata to the available DNAm data compilations:
+
+```
+snakemake --cores 1 make_md_final
+snakemake --cores 1 append_md
+```
