@@ -100,18 +100,15 @@ since the latest data freeze (currently: November 7, 2020).
 snakemake --cores 1 exclude_gsm
 ```
 
-Alternatively, you may provide your own file of GSM IDs to exclude from the instance by providing 2 flags,
-`--fname`, or the name of the file, and `--dapath`, or the path to the directory containing the gsmv file.
+For this example instance, the rule generated the following output:
 
 ```
-snakemake --cores 1 exclude_gsm --fname <FILENAME> --dpath <DIRPATH>
+Starting with latest detected filter file: recount-methylation-files/equery/gsequery_filt.1618960590
+Applying filter...
+After filter, retained 72 studies.
+Writing new filter file:  recount-methylation-files/equery/gsequery_filt.1619031416
 ```
 
-Run this script as follows:
-
-### Excluding existing samples
-
-You may wish to exclude samples from you instance. This could for, for instance, to target
-only newly available samples, or samples not included in available data freezes.
-
+Functions downstream will now recognize and use the newer version of the file `gsequery_filt.*` according 
+to the newer applied timestamp `1619031416`.
 
