@@ -11,7 +11,7 @@ Set up and maintain an instance, or synchronization, of public DNAm arrays from 
 
 This tutorial shows how to set up and initiate synchronization of public DNA methylation array data.
 
-## Setup
+## 1. Setup
 
 First clone the latest version of the `recountmethylation_instance` repo from GitHub.
 
@@ -28,7 +28,7 @@ cd recountmethylation_instance_hm450k
 ```
 Several setup options have been provided, so that you may select the best option for your OS environment.
 
-### Setup with sh script
+### 1a. Setup with sh script
 
 For setup with `sh`, run the provided script `setup_instance.sh`:
 
@@ -36,7 +36,7 @@ For setup with `sh`, run the provided script `setup_instance.sh`:
 sh setup_instance.sh
 ```
 
-### Setup with conda
+### 1b. Setup with conda
 
 For setup using virtual environments with `conda`, you may run the script `anaconda_setup.sh`:
 
@@ -50,12 +50,12 @@ Alternatively, create the environment from the provided `.yml` file:
 conda env create -f environment_rmi.yml
 ```
 
-## Configuring the instance
+## 2. Configuring the instance
  
 Next, we need to configure the instance, including specifying the array platform to target, and 
 specifying sample IDs to exclude.
 
-### Specify target platform
+### 2a. Specify target platform
 
 The HM450K platform is presently targeted by default, but this may change. To explicitly set
 the platform to target, run the following:
@@ -82,7 +82,7 @@ Entering `Y` returns:
 
 Type `1` to specify the HM450K platform.
 
-### Run a new EDirect query
+### 2b. Run a new EDirect query
 
 Data files are recognized by queries to the GEO DataSets API using EDirect software. Running a fresh query
 will identify all valid data files for the targeted platform. To do this, enter:
@@ -91,7 +91,7 @@ will identify all valid data files for the targeted platform. To do this, enter:
 snakemake --cores 1 new_eqd
 ```
 
-### Exclude freeze sample IDs
+### 2c. Exclude freeze sample IDs
 
 The sample/GSM IDs for the most recently available data freezes are included at `./inst/freeze_gsmv/`.
 Excluding these GSM IDs for this instance will allow us to synchronize the subset of samples available 
@@ -113,7 +113,7 @@ Writing new filter file:  recount-methylation-files/equery/gsequery_filt.1619031
 Functions downstream will now recognize and use the newer version of the file `gsequery_filt.*` according 
 to the newer applied timestamp `1619031416`.
 
-## Running the server
+## 3. Running the server
 
 Before we can start downloading public data, we need to run the MongoDB service with sudo access. 
 This can be done with either:
@@ -141,11 +141,11 @@ server process periodically if your connection is interrupted, the MongoDB servi
 To avoid repeated hanging on corrupt or malformed files, target study/GSE ids are shuffled for
 each `server.py` run.
 
-## Reformatting and compiling data files
+## 4. Reformatting and compiling data files
 
 Once data files have been downloaded, they can be prepared for compilation.
 
-### Sample IDATs
+### 4a. Sample IDATs
 
 The sample IDATs are paired files containing red and green signals from the array runs. Thus, two 
 valid IDATs are expected per sample/GSM id, where their filenames end as `.*_Red.idat.*` and `.*_Grn.idat.*`.
@@ -193,7 +193,7 @@ For convenience, all of the data compilation steps may be executed successively 
 snakemake --cores 1 run_dnam_pipeline
 ```
 
-### Study SOFT files
+### 4b. Study SOFT files
 
 Sample metadata is contained in the SOFT files. After expanding the `.gz` compressed SOFT files, we need to 
 extract the sample-specific metadata into `.json` files before mapping with either MetaSRA-pipeline or the 
