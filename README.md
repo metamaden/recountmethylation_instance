@@ -9,7 +9,12 @@ Set up and maintain an instance, or synchronization, of public DNAm arrays from 
 
 # Dependencies
 
-Several dependencies are required to run all features of an instance. These include R, Python 3, Python 2, MongoDB, SQLite3, and the RabbitMQ broker. The instance has been confirmed to work with the following versions:
+Dependencies to run an instance are shown in the below table. The provided setup scripts can help with
+automatica dependency installations (Tutorial, below). Instances were confirmed to work with the indicated 
+versions, and in most cases can work with more recent versions. Several dependencies are optional to run 
+specific features of an instance, as indicated in the "Required?" column.
+
+Main software and programming language dependencies:
 
 |Dependency        |         Type         |  Version  | Required? |
 |------------------|----------------------|-----------|-----------|
@@ -21,8 +26,8 @@ Several dependencies are required to run all features of an instance. These incl
 | [Entrez Utilities](https://www.ncbi.nlm.nih.gov/books/NBK25500/) | NCBI/GEO API utils   |   10.9    |    yes    |
 |  [Python 2](https://www.python.org/downloads/)      | programming language |   2.7.5   |    no     |
 
-The following Python 3 libraries are required. Note packages `dash` and 
-`plotly` are only required to run the optional server dashboard utility:
+The following Python 3 libraries are required or recommended. Note packages 
+`dash` and `plotly` are only required to run the optional server dashboard utility:
 
 |  Library  | Version | Required? |
 |-----------|---------|-----------|
@@ -33,9 +38,9 @@ The following Python 3 libraries are required. Note packages `dash` and
 |    [dash](https://pypi.org/project/dash/)   |  1.20.0 |  no  |
 |   [plotly](https://pypi.org/project/plotly/)  |  4.14.3 |  no  |
 
-The following R libraries are required. Note the `ewastools` library is 
-only required for optional genotype-based shared identity analyses, which 
-are made as part of the calculated DNAm-based metadata.
+The following R libraries are required or recommended. Note the 
+`ewastools` library is only required for optional genotype-based shared 
+identity analyses, which are made as part of the calculated DNAm-based metadata.
 
 |   Library   | Version |  Required?  |
 |-------------|---------|-------------|
@@ -46,7 +51,7 @@ are made as part of the calculated DNAm-based metadata.
 |  [ewastools]()  |   1.7   |  no  |
 
 Python 2 is only required if you intend to run the `MetaSRA-pipeline`. For this, 
-the following libraries are required:
+the following libraries are recommended:
 
 |    Library   | Version | Required? |
 |--------------|---------|-----------|
