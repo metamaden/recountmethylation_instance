@@ -6,7 +6,7 @@
 # the instance.
 #
 
-setupscriptspath=./inst/setup/
+setupscriptspath=./inst/setup_scripts/
 
 git clone https://github.com/metamaden/recountmethylation_server
 git clone https://github.com/metamaden/recountmethylation.pipeline
