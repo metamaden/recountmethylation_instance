@@ -134,11 +134,17 @@ Once MongoDB is running, we can initialize the server with:
 snakemake --cores 1 run_server
 ```
 
-This process should systematically target and download study SOFT files and sample IDAT files, 
-according to the contents of the filtered EDirect query files. Note, you may need to restart the 
-server process periodically if your connection is interrupted, the MongoDB service stops, etc.
+If this rule hangs, you may alternatively call the script manually:
 
-To avoid repeated hanging on corrupt or malformed files, target study/GSE ids are shuffled for
+```
+python3 ./recountmethylation_server/src/server.py
+```
+
+The `server.py` script process will systematically target and download study SOFT files and sample IDAT files, 
+according to the contents of the filtered EDirect query files.
+
+Note, you may need to restart the server process periodically if your connection is interrupted, the MongoDB service 
+stops, etc. To avoid repeated hanging on corrupt or malformed files, target study/GSE ids are shuffled for
 each `server.py` run.
 
 ## 4. Reformatting and compiling data files
