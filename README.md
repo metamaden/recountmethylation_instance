@@ -9,10 +9,13 @@ Set up and maintain an instance, or synchronization, of public DNAm arrays from 
 
 # Dependencies
 
-Dependencies to run an instance are shown in the below tables. The provided setup scripts can help with
-automatica dependency installations (Tutorial, below). Instances were confirmed to work with the indicated 
-versions, and in most cases can work with more recent versions. Several dependencies are optional to run 
-specific features of an instance, as indicated in the "Required?" column.
+Dependencies to run an instance are shown in the below tables. The provided setup scripts help with
+automatic dependency installations (Tutorial, below). 
+
+Tables show the dependency name (column 1), type (column 2), confirmed version (column 3), and 
+requirement (column 4). Instances were confirmed to work with the indicated versions (column 2), and in 
+many cases can work with more recent versions. Several dependencies are optional to run specific 
+features of an instance, as indicated in the "Required?" column.
 
 Main software and programming language dependencies:
 
