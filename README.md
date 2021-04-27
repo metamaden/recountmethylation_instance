@@ -7,6 +7,20 @@ Authors: Sean Maden, Abhi Nellore
 Set up and maintain an instance, or synchronization, of public DNAm arrays from the Gene Expression Omnibus 
 (GEO). Workflow functions may be accessed using the provided snakemake `Snakefile` script.
 
+# Dependencies
+
+Several dependencies are required to run all features of an instance. These include R, Python 3, Python 2, MongoDB, SQLite3, and the RabbitMQ broker. The instance has been confirmed to work with the following versions:
+
+|dependency|type|version
+-------------------
+|RabbitMQ|broker|3.8.11|
+|MongoDB|db_syntax|4.4.3|
+|SQLite|db_syntax|3.30.1|
+||||
+||||
+
+
+
 # Tutorial
 
 This tutorial shows how to set up and initiate synchronization of public DNA methylation array data.
