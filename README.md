@@ -48,7 +48,7 @@ identity analyses, which are made as part of the calculated DNAm-based metadata.
 |    [rhdf5](https://www.bioconductor.org/packages/release/bioc/html/rhdf5.html)    | R library |  2.30.1 |   yes |
 | [DelayedArray](https://www.bioconductor.org/packages/release/bioc/html/DelayedArray.html)| R library |  0.12.3 |   yes |
 |  [HDF5Array](https://www.bioconductor.org/packages/release/bioc/html/HDF5Array.html)  | R library |  1.14.4 |  yes |
-|  [ewastools]()  |   1.7   |  no  |
+|  [ewastools]()  |  R library |   1.7   |  no  |
 
 Python 2 is only required if you intend to run the `MetaSRA-pipeline`. For this, 
 the following libraries are recommended:
