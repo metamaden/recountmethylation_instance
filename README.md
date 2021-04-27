@@ -9,7 +9,7 @@ Set up and maintain an instance, or synchronization, of public DNAm arrays from 
 
 # Dependencies
 
-Dependencies to run an instance are shown in the below table. The provided setup scripts can help with
+Dependencies to run an instance are shown in the below tables. The provided setup scripts can help with
 automatica dependency installations (Tutorial, below). Instances were confirmed to work with the indicated 
 versions, and in most cases can work with more recent versions. Several dependencies are optional to run 
 specific features of an instance, as indicated in the "Required?" column.
@@ -29,39 +29,39 @@ Main software and programming language dependencies:
 The following Python 3 libraries are required or recommended. Note packages 
 `dash` and `plotly` are only required to run the optional server dashboard utility:
 
-|  Library  | Version | Required? |
-|-----------|---------|-----------|
-| [snakemake](https://pypi.org/project/snakemake/) |  6.1.2  |  yes  |
-|   [pandas](https://pypi.org/project/pandas/)  |  0.25.1 |  yes  |
-|   [celery](https://pypi.org/project/celery/)  |  4.2.1  |  yes  |
-|  [pymongo](https://pypi.org/project/pymongo/)  |  3.7.2  |  yes  |
-|    [dash](https://pypi.org/project/dash/)   |  1.20.0 |  no  |
-|   [plotly](https://pypi.org/project/plotly/)  |  4.14.3 |  no  |
+|  Library  |  Type  | Version | Required? |
+|-----------|----|---------|-----------|
+| [snakemake](https://pypi.org/project/snakemake/) |  Python 3 library |  6.1.2  |  yes  |
+|   [pandas](https://pypi.org/project/pandas/)  |  Python 3 library |  0.25.1 |  yes  |
+|   [celery](https://pypi.org/project/celery/)  |  Python 3 library |  4.2.1  |  yes  |
+|  [pymongo](https://pypi.org/project/pymongo/)  |  Python 3 library |  3.7.2  |  yes  |
+|    [dash](https://pypi.org/project/dash/)   |  Python 3 library |  1.20.0 |  no  |
+|   [plotly](https://pypi.org/project/plotly/)  |  Python 3 library |  4.14.3 |  no  |
 
 The following R libraries are required or recommended. Note the 
 `ewastools` library is only required for optional genotype-based shared 
 identity analyses, which are made as part of the calculated DNAm-based metadata.
 
-|   Library   | Version |  Required?  |
-|-------------|---------|-------------|
-|    [minfi](https://bioconductor.org/packages/release/bioc/html/minfi.html)    |  1.32.0 |    yes   |
-|    [rhdf5](https://www.bioconductor.org/packages/release/bioc/html/rhdf5.html)    |  2.30.1 |   yes |
-| [DelayedArray](https://www.bioconductor.org/packages/release/bioc/html/DelayedArray.html)|  0.12.3 |   yes |
-|  [HDF5Array](https://www.bioconductor.org/packages/release/bioc/html/HDF5Array.html)  |  1.14.4 |  yes |
+|   Library   |  Type  | Version |  Required?  |
+|-------------|--------|---------|-------------|
+|    [minfi](https://bioconductor.org/packages/release/bioc/html/minfi.html) | R library |  1.32.0 |    yes   |
+|    [rhdf5](https://www.bioconductor.org/packages/release/bioc/html/rhdf5.html)    | R library |  2.30.1 |   yes |
+| [DelayedArray](https://www.bioconductor.org/packages/release/bioc/html/DelayedArray.html)| R library |  0.12.3 |   yes |
+|  [HDF5Array](https://www.bioconductor.org/packages/release/bioc/html/HDF5Array.html)  | R library |  1.14.4 |  yes |
 |  [ewastools]()  |   1.7   |  no  |
 
 Python 2 is only required if you intend to run the `MetaSRA-pipeline`. For this, 
 the following libraries are recommended:
 
-|    Library   | Version | Required? |
-|--------------|---------|-----------|
-|    [numpy](https://pypi.org/project/numpy/)     | 1.15.4  |  no  |
-|    [scipy](https://pypi.org/project/scipy/)     |  1.1.0  |  no  |
-| [scikit-learn](https://pypi.org/project/scikit-learn/) | 0.20.1  |  no  |
-|  [setuptools](https://pypi.org/project/setuptools/)  |  0.9.8  |  no  |
-|  [marisa-trie](https://pypi.org/project/marisa-trie/) |  0.7.5  |  no  |
-|     [dill](https://pypi.org/project/dill/)    | 0.2.8.2 |  no  |
-|     [nltk](https://pypi.org/project/nltk/)     |   3.4   |  no  |
+|    Library   |  Type   | Version   | Required? |
+|--------------|---------|-----------|-----------|
+|    [numpy](https://pypi.org/project/numpy/)     |  Python 2 library  | 1.15.4  |  no  |
+|    [scipy](https://pypi.org/project/scipy/)     |  Python 2 library  | 1.1.0  |  no  |
+| [scikit-learn](https://pypi.org/project/scikit-learn/) |  Python 2 library  | 0.20.1  |  no  |
+|  [setuptools](https://pypi.org/project/setuptools/)  |  Python 2 library  |  0.9.8  |  no  |
+|  [marisa-trie](https://pypi.org/project/marisa-trie/) |  Python 2 library  |  0.7.5  |  no  |
+|     [dill](https://pypi.org/project/dill/)    |  Python 2 library  | 0.2.8.2 |  no  |
+|     [nltk](https://pypi.org/project/nltk/)     |  Python 2 library  |   3.4   |  no  |
 
 # Tutorial
 
