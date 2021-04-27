@@ -20,7 +20,39 @@ Several dependencies are required to run all features of an instance. These incl
 | SQLite   |   db_syntax          |   3.30.1  |     yes   |
 | Python   | programming_language | 2.7.5     |     no    |
 
+The following Python 3 libraries are required:
 
+| Library   | version |
+|-----------|---------|
+| pymongo   | 3.7.2   |
+| celery    | 4.2.1   |
+| plotly    | 4.14.3  |
+| pandas    | 0.25.1  |
+| dash      | 1.20.0  |
+| snakemake | 6.1.2   |
+
+The following R libraryies are required:
+
+| Library     | version |
+|-------------|---------|
+| minfi       |  1.32.0 |
+| rhdf5       |  2.30.1 |
+| DelayedArray|  0.12.3 |
+| HDF5Array   |  1.14.4 |
+| ewastools   |  1.7    |
+
+Python 2 is only required if you intend to run the `MetaSRA-pipeline`. For this, 
+the following Python libraries are required:
+
+| Library      | version |
+|--------------|---------|
+| numpy        |  1.15.4 |
+| scipy        |  1.1.0  |
+| scikit-learn |  0.20.1 |
+| setuptools   |  0.9.8  |
+| marisa-trie  |  0.7.5  |
+| dill         |  0.2.8.2|
+| nltk         |  3.4    |
 
 # Tutorial
 
