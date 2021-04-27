@@ -68,7 +68,9 @@ the following libraries are recommended:
 
 # Tutorial
 
-This tutorial shows how to set up and initiate synchronization of public DNA methylation array data.
+This tutorial shows how to set up and initiate synchronization of public DNA methylation array data. 
+Note that most steps involve calling `snakemake`rules defined in the provided `Snakefile` script. Logs, 
+including stdout, for each rule called are stored by default in the "snakemakelogs" subdirectory.
 
 ## 1. Setup
 
@@ -171,6 +173,18 @@ Writing new filter file:  recount-methylation-files/equery/gsequery_filt.1619031
 
 Functions downstream will now recognize and use the newer version of the file `gsequery_filt.*` according 
 to the newer applied timestamp `1619031416`.
+
+### 2d. Initialize the instance metadata
+
+Use the following rule to initialize the metadata, including timestamp and version, for this instance:
+
+```
+snakemake --cores 1 new_instance_md
+```
+
+This creates a new subdirectory containing the instance metadata. This is also where the newly
+generated metadata files will be stored, including metadata mapped from GSM JSON files and 
+DNAm model-based predicted metadata.
 
 ## 3. Running the server
 
