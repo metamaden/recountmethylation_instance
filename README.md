@@ -31,11 +31,11 @@ The following Python 3 libraries are required:
 |    dash   |  1.20.0 |
 | snakemake |  6.1.2  |
 
-The following R libraryies are required:
+The following R libraries are required:
 
 |   Library   | Version |
 |-------------|---------|
-|    minfi    |  1.32.0 |
+|    [minfi](https://bioconductor.org/packages/release/bioc/html/minfi.html)    |  1.32.0 |
 |    rhdf5    |  2.30.1 |
 | DelayedArray|  0.12.3 |
 |  HDF5Array  |  1.14.4 |
