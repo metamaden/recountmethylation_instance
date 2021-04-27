@@ -11,11 +11,15 @@ Set up and maintain an instance, or synchronization, of public DNAm arrays from 
 
 Several dependencies are required to run all features of an instance. These include R, Python 3, Python 2, MongoDB, SQLite3, and the RabbitMQ broker. The instance has been confirmed to work with the following versions:
 
-|dependency|     type      |  version |
-|----------|---------------|----------|
-| RabbitMQ |    broker     |  3.8.11  |
-| MongoDB  |   db_syntax   |  4.4.3   |
-| SQLite   |   db_syntax   |  3.30.1  |
+|Dependency|         Type         |  Version  | Required? |
+|----------|----------------------|-----------|-----------|
+| Python   | programming language |  >=3.7.3  |     yes   |
+| R        | programming language |  >=3.6.0  |     yes   |
+| RabbitMQ |    broker            |   3.8.11  |     yes   |
+| MongoDB  |   db_syntax          |   4.4.3   |     yes   |
+| SQLite   |   db_syntax          |   3.30.1  |     yes   |
+| Python   | programming_language | 2.7.5     |     no    |
+
 
 
 # Tutorial
