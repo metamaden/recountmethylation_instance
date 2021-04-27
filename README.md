@@ -13,46 +13,46 @@ Several dependencies are required to run all features of an instance. These incl
 
 |Dependency|         Type         |  Version  | Required? |
 |----------|----------------------|-----------|-----------|
-| Python   | programming language |  >=3.7.3  |     yes   |
-| R        | programming language |  >=3.6.0  |     yes   |
-| RabbitMQ |    broker            |   3.8.11  |     yes   |
-| MongoDB  |   db_syntax          |   4.4.3   |     yes   |
-| SQLite   |   db_syntax          |   3.30.1  |     yes   |
-| Python   | programming_language | 2.7.5     |     no    |
+|  Python  | programming language |  >=3.7.3  |    yes    |
+|     R    | programming language |  >=3.6.0  |    yes    |
+| RabbitMQ |        broker        |   3.8.11  |    yes    |
+|  MongoDB |      db syntax       |   4.4.3   |    yes    |
+|  SQLite  |      db syntax       |   3.30.1  |    yes    |
+|  Python  | programming language |   2.7.5   |    no     |
 
 The following Python 3 libraries are required:
 
-| Library   | version |
+|  Library  | Version |
 |-----------|---------|
-| pymongo   | 3.7.2   |
-| celery    | 4.2.1   |
-| plotly    | 4.14.3  |
-| pandas    | 0.25.1  |
-| dash      | 1.20.0  |
-| snakemake | 6.1.2   |
+|  pymongo  |  3.7.2  |
+|   celery  |  4.2.1  |
+|   plotly  |  4.14.3 |
+|   pandas  |  0.25.1 |
+|    dash   |  1.20.0 |
+| snakemake |  6.1.2  |
 
 The following R libraryies are required:
 
-| Library     | version |
+|   Library   | Version |
 |-------------|---------|
-| minfi       |  1.32.0 |
-| rhdf5       |  2.30.1 |
+|    minfi    |  1.32.0 |
+|    rhdf5    |  2.30.1 |
 | DelayedArray|  0.12.3 |
-| HDF5Array   |  1.14.4 |
-| ewastools   |  1.7    |
+|  HDF5Array  |  1.14.4 |
+|  ewastools  |   1.7   |
 
 Python 2 is only required if you intend to run the `MetaSRA-pipeline`. For this, 
 the following Python libraries are required:
 
-| Library      | version |
+|    Library   | Version |
 |--------------|---------|
-| numpy        |  1.15.4 |
-| scipy        |  1.1.0  |
-| scikit-learn |  0.20.1 |
-| setuptools   |  0.9.8  |
-| marisa-trie  |  0.7.5  |
-| dill         |  0.2.8.2|
-| nltk         |  3.4    |
+|    numpy     | 1.15.4  |
+|    scipy     |  1.1.0  |
+| scikit-learn | 0.20.1  |
+|  setuptools  |  0.9.8  |
+|  marisa-trie |  0.7.5  |
+|     dill     | 0.2.8.2 |
+|     nltk     |   3.4   |
 
 # Tutorial
 
