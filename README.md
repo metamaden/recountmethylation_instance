@@ -328,7 +328,7 @@ snakemake --cores 1 append_md
 
 # Additional resources
 
-If you found `recountmethylation_instance` useful, the following resources helpful.
+If you found `recountmethylation_instance` useful, the following resources may also be helpful.
 
 * [`recountmethylation`](https://www.bioconductor.org/packages/release/bioc/html/recountmethylation.html). R/Bioconductor package providing utilities to access and analyze public DNAm array data from GEO.
 
