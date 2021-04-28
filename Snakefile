@@ -94,41 +94,59 @@ ts = gettime_ntp(); print("New timestamp for run: "+ts)
 # Server processes
 # NOTE: Rules to handle file acquisition and formatting from GEO.
 
+# Set the target platform accession for the instance
 rule set_acc:
     input: os.path.join(srcpath, "set_acc.py")
     log: os.path.join(logspath, "set_acc_"+ts+".log")
     shell: "python3 {input}"
 
+# Query the GEO DataSets API for samples, studies for the indicated platform
 rule new_eqd:
     input: os.path.join(srcpath, "edirect_query.py")
     log: os.path.join(logspath, "eqd_"+ts+".log")
     shell: "python3 {input}"
 
+# Exclude samples included in the most recent freeze located at 
+# ./inst/freeze_gsmv
 rule exclude_gsm:
     input: os.path.join(srcpath, "gsm_exclude.py")
     log: os.path.join(logspath, "gsm_exclude_"+ts+".log")
     shell: "python3 {input}"
 
+# Run the server process to download study SOFT files and sample IDAT files
 rule run_server:
     input: os.path.join(srcpath, "server.py")
     log: os.path.join(logspath, "run_server_"+ts+".log")
     shell: "python3 {input} > {log}"
 
+# Run the server dashboard utility. View by opening a browser window at the 
+# indicated IP address
+rule server_dash:
+    input: os.path.join(srcpath, "serverdash.py")
+    log: os.path.join(logspath, "serverdash_"+ts+".log")
+    shell: "python3 {input} > {log}"
+
+# Unzip .gz compressed IDAT files
 rule unzip_idats:
     input: os.path.join(srcpath, "process_idats.py")
     log: os.path.join(logspath, "unzip_idats_"+ts+".log")
     shell: "python3 {input} > {log}"
 
+# Make new IDAT hardlinks with identical basenames (e.g. same timestamps)
 rule make_idat_hlinks:
     input: os.path.join(srcpath, "rsheet.py")
     log: os.path.join(logspath, "rsheet_"+ts+".log")
     shell: "python3 {input} > {log}"
 
+# Expand study SOFT files, extract sample metadata, and store as 
+# sample-specific files
 rule process_soft:
     input: os.path.join(srcpath, "process_soft.py")
     log: os.path.join(logspath, "process_soft_"+ts+".log")
     shell: "python3 {input} > {log}"
 
+# Convert SOFT-derived sample metadata to JSON format, then further sample JSON
+# data to remove any study-specific metadata fields
 rule apply_jsonfilt:
     input: os.path.join(srcpath, "jsonfilt.R")
     log: os.path.join(logspath, "apply_jsonfilt_"+ts+".log")
@@ -139,6 +157,7 @@ rule apply_jsonfilt:
 #    log: os.path.join(logspath, "soft_cleanup_"+ts+".log")
 #    shell: "python3 {input} --cleanup True  > {log}"
 
+# Generate a report summarizing the current instance files
 rule report:
     input: os.path.join(srcpath, "report.py")
     log: os.path.join(logspath, "report_"+ts+".log")
@@ -154,46 +173,42 @@ rule new_instance_md:
     input: os.path.join(rmp_path, "new_instance_md.R")
     shell: "Rscript {input}"
 
-# run the full pipeline (makes h5 and h5se files in 3 formats)
+# Run the full pipeline (makes h5 and h5se files in 3 formats)
 rule run_dnam_pipeline:
     input: os.path.join(rmp_path, "run_dnam_pipeline.R")
     shell: "Rscript {input}"
 
-
-
-# make individual data tables and database file types
-
-# compile the red/green signal data table files
+# Compile the red/green signal data table files
 rule get_rg_compilations:
     input: os.path.join(rmp_path, "get_rg_compilations.R")
     shell: "Rscript {input}"
 
-# make the h5 rg database
+# Make the h5 rg database
 rule get_h5db_rg:
     input: os.path.join(rmp_path, "get_h5db_rg.R")
     shell: "Rscript {input}"
 
-# make the h5se rg database
+# Make the h5se rg database
 rule get_h5se_rg:
     input: os.path.join(rmp_path, "get_h5se_rg.R")
     shell: "Rscript {input}"
 
-# make the h5 gm database
+# Make the h5 gm database
 rule get_h5db_gm:
     input: os.path.join(rmp_path, "get_h5db_gm.R")
     shell: "Rscript {input}"
 
-# make the h5 gm database
+# Make the h5 gm database
 rule get_h5se_gm:
     input: os.path.join(rmp_path, "get_h5se_gm.R")
     shell: "Rscript {input}"
 
-# make the h5 gr database
+# Make the h5 gr database
 rule get_h5db_gr:
     input: os.path.join(rmp_path, "get_h5db_gr.R")
     shell: "Rscript {input}"
 
-# make the h5se gr database
+# Make the h5se gr database
 rule get_h5se_gr:
     input: os.path.join(rmp_path, "get_h5se_gr.R")
     shell: "Rscript {input}"
@@ -202,26 +217,28 @@ rule get_h5se_gr:
 # Process sample metadata
 #------------------------
 # NOTE: Rules to extract and map sample metadata
+
+# Run the MetaSRA-pipeline
 rule run_msrap:
     input: os.path.join(srcpath, "run_msrap.R")
     shell: "Rscript {input}"
 
-# map and harmonize metadata from filtered JSON files
+# Map and harmonize metadata from filtered JSON files
 rule do_mdmap:
     input: os.path.join(rsynth_path, "do_mdmap.R")
     shell: "Rscript {input}"
 
-# get dnam-derived md and qc metrics
+# Get DNAm-derived md and qc metrics
 rule do_dnam_md:
     input: os.path.join(rsynth_path, "make_dnam_md.R")
     shell: "Rscript {input}"
 
-# get composite md from mdfinal, mdpred, mdqc
+# Get composite md from mdfinal, mdpred, mdqc
 rule make_md_final:
     input: os.path.join(rsynth_path, "make_md_final.R")
     shell: "Rscript {input}"
 
-# append updated md to available compilation files
+# Append updated md to available compilation files
 rule append_md:
     input: os.path.join(rsynth_path, "append_md.R")
     shell: "Rscript {input}"
