@@ -2,7 +2,7 @@
 
 [![DOI]()]()
 
-Authors: Sean Maden, Abhi Nellore
+Authors: Sean Maden, Reid Thompson, Kasper Hansen, Abhi Nellore
 
 Set up and maintain an instance, or synchronization, of public DNAm arrays from the Gene Expression Omnibus 
 (GEO). Workflow functions may be accessed using the provided snakemake `Snakefile` script.
