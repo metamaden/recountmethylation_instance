@@ -16,7 +16,7 @@ If you find `recountmethylation_instance` useful, the following resources may al
 
 * `recountmethylation`. R/Bioconductor package providing utilities to access and analyze public DNAm array data from GEO. [10.18129/B9.bioc.recountmethylation](https://doi.org/doi:10.18129/B9.bioc.recountmethylation)
 
-* Sean K Maden, Reid F Thompson, Kasper D Hansen, Abhinav Nellore, Human methylome variation across Infinium 450K data on the Gene Expression Omnibus, NAR Genomics and Bioinformatics, Volume 3, Issue 2, June 2021, lqab025, https://doi.org/10.1093/nargab/lqab025 
+* Sean K Maden, Reid F Thompson, Kasper D Hansen, Abhinav Nellore, *Human methylome variation across Infinium 450K data on the Gene Expression Omnibus*, NAR Genomics and Bioinformatics, Volume 3, Issue 2, June 2021, lqab025, https://doi.org/10.1093/nargab/lqab025 
 
 # Dependencies
 
