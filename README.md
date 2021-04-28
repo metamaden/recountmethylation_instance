@@ -10,6 +10,14 @@ setting up an environment for synchronization, including all steps to create har
 HDF5-SummarizedExperiment `h5se` database files. Workflow functions may be accessed using `snakemake` 
 rules defined in the provided `Snakefile` script.
 
+# Additional resources
+
+If you find `recountmethylation_instance` useful, the following resources may also be helpful.
+
+* `recountmethylation`. R/Bioconductor package providing utilities to access and analyze public DNAm array data from GEO. [10.18129/B9.bioc.recountmethylation](https://doi.org/doi:10.18129/B9.bioc.recountmethylation)
+
+* Sean K Maden, Reid F Thompson, Kasper D Hansen, Abhinav Nellore, Human methylome variation across Infinium 450K data on the Gene Expression Omnibus, NAR Genomics and Bioinformatics, Volume 3, Issue 2, June 2021, lqab025, https://doi.org/10.1093/nargab/lqab025 
+
 # Dependencies
 
 Dependencies to run an instance are shown in the below tables. The provided setup scripts help with
@@ -325,11 +333,3 @@ Once one or all of these rules have been successfully run, compile and append th
 snakemake --cores 1 make_md_final
 snakemake --cores 1 append_md
 ```
-
-# Additional resources
-
-If you found `recountmethylation_instance` useful, the following resources may also be helpful.
-
-* `recountmethylation`. R/Bioconductor package providing utilities to access and analyze public DNAm array data from GEO. [10.18129/B9.bioc.recountmethylation](https://doi.org/doi:10.18129/B9.bioc.recountmethylation)
-
-* Sean K Maden, Reid F Thompson, Kasper D Hansen, Abhinav Nellore, Human methylome variation across Infinium 450K data on the Gene Expression Omnibus, NAR Genomics and Bioinformatics, Volume 3, Issue 2, June 2021, lqab025, https://doi.org/10.1093/nargab/lqab025 
