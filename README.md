@@ -325,3 +325,11 @@ Once one or all of these rules have been successfully run, compile and append th
 snakemake --cores 1 make_md_final
 snakemake --cores 1 append_md
 ```
+
+# Additional resources
+
+If you found `recountmethylation_instance` useful, the following resources helpful.
+
+* [`recountmethylation`](https://www.bioconductor.org/packages/release/bioc/html/recountmethylation.html). R/Bioconductor package providing utilities to access and analyze public DNAm array data from GEO.
+
+* Sean K Maden, Reid F Thompson, Kasper D Hansen, Abhinav Nellore, Human methylome variation across Infinium 450K data on the Gene Expression Omnibus, NAR Genomics and Bioinformatics, Volume 3, Issue 2, June 2021, lqab025, https://doi.org/10.1093/nargab/lqab025 
