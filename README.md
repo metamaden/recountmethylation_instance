@@ -220,6 +220,24 @@ Note, you may need to restart the server process periodically if your connection
 stops, etc. To avoid repeated hanging on corrupt or malformed files, target study/GSE ids are shuffled for
 each `server.py` run.
 
+As the server process runs, you may monitor progress. Check the total study SOFT and sample IDAT files downloaded with:
+
+```
+ls -l recount-methylation-files/gse_soft/ | wc -l
+ls -l recount-methylation-files/idats/ | wc -l
+```
+
+For added convenience, a server dashboard utility has been provided. This displays the instance files over time, and allows
+you to track the addition of new files over time. Run the dashboard with:
+
+```
+snakemake --cores 1 server_dash
+```
+
+This should open a new browser window with the following:
+
+
+
 ## 4. Reformatting and compiling data files
 
 Once data files have been downloaded, they can be prepared for compilation.
