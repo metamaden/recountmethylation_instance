@@ -4,11 +4,11 @@
 
 Authors: Sean Maden, Reid Thompson, Kasper Hansen, Abhi Nellore
 
-Set up and maintain an instance, or synchronization, of public DNAm arrays from the Gene Expression Omnibus 
-(GEO). The `recountmethylation_instance` resource provides the means of setting up an environment for 
-synchronization, including all steps to create harmonized `HDF5` and `HDF5-SummarizedExperiment` outputs for
-public DNAm array platforms. Workflow functions may be accessed using `snakemake` rules defined in the provided 
-`Snakefile` script.
+Set up and maintain an instance, or synchronization, of public DNAm arrays from the [Gene Expression Omnibus 
+(GEO)](https://www.ncbi.nlm.nih.gov/geo/). The `recountmethylation_instance` resource provides the means of 
+setting up an environment for synchronization, including all steps to create harmonized HDF5 `.h5` and 
+HDF5-SummarizedExperiment `h5se` database files. Workflow functions may be accessed using `snakemake` 
+rules defined in the provided `Snakefile` script.
 
 # Dependencies
 
