@@ -37,9 +37,9 @@ python2 $setupscriptspath"punkt_setup.py"
 sh $setupscriptspath"msrap_setup.sh"
 
 # run R setup
+Rscript $setupscriptspath"r_setup.R"
 R CMD INSTALL recountmethylation.pipeline
 R CMD INSTALL recount.synth
-Rscript $setupscriptspath"r_setup.R"
 
 # test installations
 # python3 ./recountmethylation_server/src/start_server.py
