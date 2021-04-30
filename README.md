@@ -17,7 +17,7 @@ versioning with timestamps, extensive quality filters and sanity checks, and eff
 large datasets out of memory or with proper data formats.
 
 If you are instead obtaining data from just one or a few samples or studies from GEO, there are several 
-more lightweight approaches available to you, including manual download of files from the website. 
+more lightweight approaches available to you, including manual download of files from the GEO website. 
 Programmatic options are made available in various R/Bioconductor libraries, including functions provided 
 in the [`GEOquery`](https://www.bioconductor.org/packages/release/bioc/html/GEOquery.html) library, as well 
 as the `getGenomicRatioSetFromGEO()` function from the [`minfi`](http://bioconductor.org/packages/release/bioc/html/minfi.html) 
