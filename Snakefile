@@ -98,20 +98,20 @@ ts = gettime_ntp(); print("New timestamp for run: "+ts)
 rule set_acc:
     input: os.path.join(srcpath, "set_acc.py")
     log: os.path.join(logspath, "set_acc_"+ts+".log")
-    shell: "python3 {input}"
+    shell: "python3 {input} > {log}"
 
 # Query the GEO DataSets API for samples, studies for the indicated platform
 rule new_eqd:
     input: os.path.join(srcpath, "edirect_query.py")
     log: os.path.join(logspath, "eqd_"+ts+".log")
-    shell: "python3 {input}"
+    shell: "python3 {input} > {log}"
 
 # Exclude samples included in the most recent freeze located at 
 # ./inst/freeze_gsmv
 rule exclude_gsm:
     input: os.path.join(srcpath, "gsm_exclude.py")
     log: os.path.join(logspath, "gsm_exclude_"+ts+".log")
-    shell: "python3 {input}"
+    shell: "python3 {input} > {log}"
 
 # Run the server process to download study SOFT files and sample IDAT files
 rule run_server:
@@ -172,55 +172,55 @@ rule report:
 rule new_instance_md:
     input: os.path.join(rmp_path, "new_instance_md.R")
     log: os.path.join(logspath, "new_instance_md_"+ts+".log")
-    shell: "Rscript {input}"
+    shell: "Rscript {input} > {log}"
 
 # Run the full pipeline (makes h5 and h5se files in 3 formats)
 rule run_dnam_pipeline:
     input: os.path.join(rmp_path, "run_dnam_pipeline.R")
     log: os.path.join(logspath, "run_dnam_pipeline_"+ts+".log")
-    shell: "Rscript {input}"
+    shell: "Rscript {input} > {log}"
 
 # Compile the red/green signal data table files
 rule get_rg_compilations:
     input: os.path.join(rmp_path, "get_rg_compilations.R")
     log: os.path.join(logspath, "get_rg_compilations_"+ts+".log")
-    shell: "Rscript {input}"
+    shell: "Rscript {input} > {log}"
 
 # Make the h5 rg database
 rule get_h5db_rg:
     input: os.path.join(rmp_path, "get_h5db_rg.R")
     log: os.path.join(logspath, "get_h5db_rg_"+ts+".log")
-    shell: "Rscript {input}"
+    shell: "Rscript {input} > {log}"
 
 # Make the h5se rg database
 rule get_h5se_rg:
     input: os.path.join(rmp_path, "get_h5se_rg.R")
     log: os.path.join(logspath, "get_h5se_rg_"+ts+".log")
-    shell: "Rscript {input}"
+    shell: "Rscript {input} > {log}"
 
 # Make the h5 gm database
 rule get_h5db_gm:
     input: os.path.join(rmp_path, "get_h5db_gm.R")
     log: os.path.join(logspath, "get_h5db_gm_"+ts+".log")
-    shell: "Rscript {input}"
+    shell: "Rscript {input} > {log}"
 
 # Make the h5 gm database
 rule get_h5se_gm:
     input: os.path.join(rmp_path, "get_h5se_gm.R")
     log: os.path.join(logspath, "get_h5se_gm_"+ts+".log")
-    shell: "Rscript {input}"
+    shell: "Rscript {input} > {log}"
 
 # Make the h5 gr database
 rule get_h5db_gr:
     input: os.path.join(rmp_path, "get_h5db_gr.R")
     log: os.path.join(logspath, "get_h5db_gr_"+ts+".log")
-    shell: "Rscript {input}"
+    shell: "Rscript {input} > {log}"
 
 # Make the h5se gr database
 rule get_h5se_gr:
     input: os.path.join(rmp_path, "get_h5se_gr.R")
     log: os.path.join(logspath, "get_h5se_gr_"+ts+".log")
-    shell: "Rscript {input}"
+    shell: "Rscript {input} > {log}"
 
 #------------------------
 # Process sample metadata
@@ -231,28 +231,28 @@ rule get_h5se_gr:
 rule run_msrap:
     input: os.path.join(srcpath, "run_msrap.R")
     log: os.path.join(logspath, "run_msrap_"+ts+".log")
-    shell: "Rscript {input}"
+    shell: "Rscript {input} > {log}"
 
 # Map and harmonize metadata from filtered JSON files
 rule do_mdmap:
     input: os.path.join(rsynth_path, "do_mdmap.R")
     log: os.path.join(logspath, "do_mdmap_"+ts+".log")
-    shell: "Rscript {input}"
+    shell: "Rscript {input} > {log}"
 
 # Get DNAm-derived md and qc metrics
 rule do_dnam_md:
     input: os.path.join(rsynth_path, "make_dnam_md.R")
     log: os.path.join(logspath, "make_dnam_md_"+ts+".log")
-    shell: "Rscript {input}"
+    shell: "Rscript {input} > {log}"
 
 # Get composite md from mdfinal, mdpred, mdqc
 rule make_md_final:
     input: os.path.join(rsynth_path, "make_md_final.R")
     log: os.path.join(logspath, "make_md_final_"+ts+".log")
-    shell: "Rscript {input}"
+    shell: "Rscript {input} > {log}"
 
 # Append updated md to available compilation files
 rule append_md:
     input: os.path.join(rsynth_path, "append_md.R")
     log: os.path.join(logspath, "append_md_"+ts+".log")
-    shell: "Rscript {input}"
+    shell: "Rscript {input} > {log}"
