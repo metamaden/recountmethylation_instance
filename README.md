@@ -27,9 +27,19 @@ library, and the `gds_idatquery()` and `gds_idat2rg()` functions from the [`reco
 
 If you find `recountmethylation_instance` useful, the following resources may also be helpful.
 
+## Packages
+
 * `recountmethylation`. R/Bioconductor package providing utilities to access and analyze public DNAm array data from GEO. [10.18129/B9.bioc.recountmethylation](https://doi.org/doi:10.18129/B9.bioc.recountmethylation)
 
+* `minfi`. R/Bioconductor package for analysis of DNA methylation arrays. 10.18129/B9.bioc.minfi 
+
+* `HDF5Array`. R/Bioconductor package for handling HDF5 and HDF5SummarizedExperiment objects with DelayedArray-powered backends. 10.18129/B9.bioc.HDF5Array 
+
+## Papers
+
 * Sean K Maden, Reid F Thompson, Kasper D Hansen, Abhinav Nellore, *Human methylome variation across Infinium 450K data on the Gene Expression Omnibus*, NAR Genomics and Bioinformatics, Volume 3, Issue 2, June 2021, lqab025, https://doi.org/10.1093/nargab/lqab025 
+
+* Triche TJ, Weisenberger DJ, Van Den Berg D, Laird PW, Siegmund KD (2013). “Low-level processing of Illumina Infinium DNA Methylation BeadArrays.” _Nucleic Acids Research_, *41*(7), e90. doi: 10.1093/nar/gkt090 (URL: https://doi.org/10.1093/nar/gkt090).
 
 # Dependencies
 
