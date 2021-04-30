@@ -31,9 +31,9 @@ If you find `recountmethylation_instance` useful, the following resources may al
 
 * `recountmethylation`. R/Bioconductor package providing utilities to access and analyze public DNAm array data from GEO. [10.18129/B9.bioc.recountmethylation](https://doi.org/doi:10.18129/B9.bioc.recountmethylation)
 
-* `minfi`. R/Bioconductor package for analysis of DNA methylation arrays. 10.18129/B9.bioc.minfi 
+* `minfi`. R/Bioconductor package for analysis of DNA methylation arrays. [10.18129/B9.bioc.minfi](10.18129/B9.bioc.minfi )
 
-* `HDF5Array`. R/Bioconductor package for handling HDF5 and HDF5SummarizedExperiment objects with DelayedArray-powered backends. 10.18129/B9.bioc.HDF5Array 
+* `HDF5Array`. R/Bioconductor package for handling HDF5 and HDF5SummarizedExperiment objects with DelayedArray-powered backends. [10.18129/B9.bioc.HDF5Array](10.18129/B9.bioc.HDF5Array) 
 
 ## Papers
 
