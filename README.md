@@ -269,8 +269,37 @@ timestamps match for sample IDAT pairs.
 snakemake --cores 1 make_idat_hlinks
 ```
 
-Once the IDATs have been prepared, we can begin to compile them into various database file types.
-The rules to do this include: 
+Once the IDATs have been prepared, they can be compiled into various database file types. To begin,
+read the raw/unnormalized red and green signals are read into flat tables. 
+
+```
+snakemake --cores 1 get_rg_compilations
+```
+
+Since downloaded IDATs may occasionally be malformed, mislabeled, or otherwise unreadable, a series of checks
+are performed automatically, including an evaluation of file sizes and similar sizes for paired red and 
+green signal files. In practice, this means sample files are first read in batches, or chunks. If reading a 
+given chunk fails, individual sample IDATs are read in successively and invalid files are excluded.
+
+Next, the flat red and green signal tables are used to make HDF5 `h5` and HDF5-SummarizedExperiment `h5se` 
+objects. These are further used to derive DNAm in various other useful formats. 
+
+```
+snakemake --cores 1 get_h5db_rg
+snakemake --cores 1 get_h5se_rg
+```
+
+Once the red and green `RGChannelSet` tables and database files are generated, you may proceed to generate 
+additional compilation files. 
+
+For added convenience, all of the data compilation steps may be automatically and successively executed 
+using the `run_dnam_pipeline` rule:
+
+```
+snakemake --cores 1 run_dnam_pipeline
+```
+
+The full list of compilation rules, in their recommended order, is as follows:
 
 1. `get_rg_compilations`: Make flat tables containing the Red and Green signal intensities. 
 2. `get_h5db_rg`: Make an HDF5 database `.h5` file containing the Red and Green signal intensities. 
@@ -279,25 +308,6 @@ The rules to do this include:
 5. `get_h5se_gm`: Make an HDF5-SummarizedExperiment `h5se` file containing the Methylated and Unmethylated signals.
 6. `get_h5db_gr`: Make an HDF5 database `.h5` file containing the Beta-values (DNAm fractions).
 7. `get_h5se_gr`: Make an HDF5-SummarizedExperiment `h5se` file containing the Beta-values (DNAm fractions).
-
-Note, you can retain any subset of these database files, but you should generally run them successively, 
-as certain database files (e.g. the `RGChannelSet` `h5` and `h5se` files) are required to prepare the 
-other files (e.g. `MethylSet` `h5` and `h5se` files, and `GenomicMethylSet` `h5` and `h5se` files). In 
-other words, regardless of which file type you ultimately use, you'll need to start by preparing the 
-`RGChannelSet` files as follows:
-
-```
-snakemake --cores 1 get_rg_compilations
-snakemake --cores 1 get_h5db_rg
-snakemake --cores 1 get_h5se_rg
-```
-
-For convenience, all of the data compilation steps may be executed successively using the 
-`run_dnam_pipeline` rule.
-
-```
-snakemake --cores 1 run_dnam_pipeline
-```
 
 ### 4b. Study SOFT files
 
