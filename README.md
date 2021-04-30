@@ -2,11 +2,26 @@
 
 Authors: Sean Maden, Reid Thompson, Kasper Hansen, Abhi Nellore
 
-Set up and maintain an instance, or synchronization, of public DNAm arrays from the [Gene Expression Omnibus 
-(GEO)](https://www.ncbi.nlm.nih.gov/geo/). The `recountmethylation_instance` resource provides the means of 
-setting up an environment for synchronization, including all steps to create harmonized HDF5 `.h5` and 
-HDF5-SummarizedExperiment `h5se` database files. Workflow functions may be accessed using `snakemake` 
-rules defined in the provided `Snakefile` script.
+Set up and maintain an instance, or synchronization, of public DNA methylation (DNAm) arrays from the 
+[Gene Expression Omnibus (GEO)](https://www.ncbi.nlm.nih.gov/geo/). The `recountmethylation_instance` 
+resource provides the means of setting up an environment for synchronization, including all steps to 
+create harmonized HDF5 `.h5` and HDF5-SummarizedExperiment `h5se` database files. Workflow functions 
+may be accessed using `snakemake` rules defined in the provided `Snakefile` script.
+
+# Who is this resource for?
+
+The `recountmethylation_instance` resource powers comprehensive and semi-automated download, 
+harmonization, and compilation of DNAm array data from across many samples and studies. It can handle data
+from tens of thousands of samples and hundreds of studies. This is accomplished with features like file 
+versioning with timestamps, extensive quality filters and sanity checks, and efficient handling of 
+large datasets out of memory or with proper data formats.
+
+If you are instead obtaining data from just one or a few samples or studies from GEO, there are several 
+more lightweight approaches available to you, including manual download of files from the website. 
+Programmatic options are made available in various R/Bioconductor libraries, including functions provided 
+in the [`GEOquery`](https://www.bioconductor.org/packages/release/bioc/html/GEOquery.html) library, as well 
+as the `getGenomicRatioSetFromGEO()` function from the [`minfi`](http://bioconductor.org/packages/release/bioc/html/minfi.html) 
+library, and the `gds_idatquery()` and `gds_idat2rg()` functions from the [`recountmethylation`](https://www.bioconductor.org/packages/devel/bioc/html/recountmethylation.html) library.
 
 # Additional resources
 
