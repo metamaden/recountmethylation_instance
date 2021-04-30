@@ -270,7 +270,7 @@ snakemake --cores 1 make_idat_hlinks
 ```
 
 Once the IDATs have been prepared, they can be compiled into various database file types. To begin,
-read the raw/unnormalized red and green signals are read into flat tables. 
+read the raw/unnormalized red and green signals are into flat compilation tables with `get_rg_compilations`. 
 
 ```
 snakemake --cores 1 get_rg_compilations
@@ -278,11 +278,12 @@ snakemake --cores 1 get_rg_compilations
 
 Since downloaded IDATs may occasionally be malformed, mislabeled, or otherwise unreadable, a series of checks
 are performed automatically, including an evaluation of file sizes and similar sizes for paired red and 
-green signal files. In practice, this means sample files are first read in batches, or chunks. If reading a 
-given chunk fails, individual sample IDATs are read in successively and invalid files are excluded.
+green signal files. In practice, this means an initial attempt is made to read in samples as batches, or chunks. 
+If the attempt to read a given chunk fails, individual sample IDATs are read in successively and combined, and 
+invalid files are excluded.
 
-Next, the flat red and green signal tables are used to make HDF5 `h5` and HDF5-SummarizedExperiment `h5se` 
-objects. These are further used to derive DNAm in various other useful formats. 
+Next, the flat red and green signal compilation tables are used to make HDF5 `h5` and HDF5-SummarizedExperiment 
+`h5se` objects.
 
 ```
 snakemake --cores 1 get_h5db_rg
@@ -290,16 +291,7 @@ snakemake --cores 1 get_h5se_rg
 ```
 
 Once the red and green `RGChannelSet` tables and database files are generated, you may proceed to generate 
-additional compilation files. 
-
-For added convenience, all of the data compilation steps may be automatically and successively executed 
-using the `run_dnam_pipeline` rule:
-
-```
-snakemake --cores 1 run_dnam_pipeline
-```
-
-The full list of compilation rules, in their recommended order, is as follows:
+additional compilation files. The full list of compilation rules, in their recommended order, is as follows:
 
 1. `get_rg_compilations`: Make flat tables containing the Red and Green signal intensities. 
 2. `get_h5db_rg`: Make an HDF5 database `.h5` file containing the Red and Green signal intensities. 
@@ -308,6 +300,13 @@ The full list of compilation rules, in their recommended order, is as follows:
 5. `get_h5se_gm`: Make an HDF5-SummarizedExperiment `h5se` file containing the Methylated and Unmethylated signals.
 6. `get_h5db_gr`: Make an HDF5 database `.h5` file containing the Beta-values (DNAm fractions).
 7. `get_h5se_gr`: Make an HDF5-SummarizedExperiment `h5se` file containing the Beta-values (DNAm fractions).
+
+For added convenience, all of the data compilation steps may be automatically and successively executed in their 
+recommended order using the `run_dnam_pipeline` rule:
+
+```
+snakemake --cores 1 run_dnam_pipeline
+```
 
 ### 4b. Study SOFT files
 
