@@ -37,8 +37,12 @@ conda create -n py3 python=3.7.0; conda activate py3
 conda install -c anaconda mongodb
 conda install -c anaconda sqlite3
 conda install r=3.6.0
+conda install perl=5.26.2
 
 # install entrez direct utilities
+curl ftp://ftp.ncbi.nlm.nih.gov/entrez/entrezdirect/install-edirect.sh > install-edirect.sh
+source ./install-edirect.sh
+echo "export PATH=\$PATH:\$HOME/edirect" >> $HOME/.bash_profile
 
 # required python3 libs
 conda install pandas=0.25.1
