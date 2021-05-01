@@ -37,9 +37,9 @@ If you find `recountmethylation_instance` useful, the following resources may al
 
 ## Papers
 
-* Sean K Maden, Reid F Thompson, Kasper D Hansen, Abhinav Nellore, *Human methylome variation across Infinium 450K data on the Gene Expression Omnibus*, NAR Genomics and Bioinformatics, Volume 3, Issue 2, June 2021, lqab025, https://doi.org/10.1093/nargab/lqab025 
+* Sean K Maden, Reid F Thompson, Kasper D Hansen, Abhinav Nellore, *Human methylome variation across Infinium 450K data on the Gene Expression Omnibus*, NAR Genomics and Bioinformatics, Volume 3, Issue 2, June 2021, https://doi.org/10.1093/nargab/lqab025 
 
-* Triche TJ, Weisenberger DJ, Van Den Berg D, Laird PW, Siegmund KD (2013). “Low-level processing of Illumina Infinium DNA Methylation BeadArrays.” _Nucleic Acids Research_, *41*(7), e90. doi: 10.1093/nar/gkt090 (URL: https://doi.org/10.1093/nar/gkt090).
+* Timothy J Triche Jr, Daniel J Weisenberger, David Van Den Berg, Peter W Laird, Kimberly D Siegmund, *Low-level processing of Illumina Infinium DNA Methylation BeadArrays*, Nucleic Acids Research, Volume 41, Issue 7, April 2013, https://doi.org/10.1093/nar/gkt090
 
 # Dependencies
 
