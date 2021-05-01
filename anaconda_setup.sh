@@ -26,17 +26,23 @@ git clone https://github.com/metamaden/MetaSRA-pipeline
 # main environment
 #-----------------
 # set up environment with python3, R, other dependencies
-conda create -n py3 python=3.7
+conda create -n py3 python=3.7.0
 conda activate py3
-conda install pymongo 
-conda install celery 
-conda install plotly 
-conda install pandas 
-conda install dash
-pip install snakemake
+
+# additional dependencies
 conda install -c anaconda mongodb
 conda install -c anaconda sqlite3
 conda install r=3.6.0
+
+# required python3 libs
+conda install pymongo=3.7.2 
+conda install celery
+conda install pandas=0.25.1
+pip install snakemake=6.1.2
+
+# optional python3 libs
+conda install plotly=4.14.3
+conda install dash=1.20.1
 
 # r lib manual dependency installs
 conda install boost=1.73.0 # RSQLite dependency
