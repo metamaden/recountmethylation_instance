@@ -90,25 +90,26 @@ quit()
 R CMD INSTALL recountmethylation.pipeline
 
 # get the environment.yml file
-conda env export > environment_rmi_py3.yml
+# conda env export > environment_rmi_py3.yml
 
-conda deactivate py3
+conda deactivate
 
 #--------------------------------------
 # environment for MetaSRA-pipeline, py2
 #--------------------------------------
 # optional, run if metadata mapping with the pipeline is desired
-conda create -n py2 python=2.7; conda activate py2
+conda create -n py2 python=2.7.18; conda activate py2
 
 # install python2 libs
 conda install numpy 
 conda install scipy
 conda install scikit-learn
 conda install setuptools
-conda install marisa-trie
+# conda install marisa-trie
 conda install dill
 conda install nltk
-conda install snakemake
+# conda install snakemake
+# pip install marisa-trie
 
 # further steps to set up the pipeline
 python2 $setupscriptspath"punkt_setup.py"
@@ -116,6 +117,6 @@ python2 $setupscriptspath"punkt_setup.py" # get punkt for nltk
 sh $setupscriptspath"msrap_setup.sh" # run pipeline setup script
 
 # get the environment.yml file
-conda env export > environment_rmi_py2.yml
+# conda env export > environment_rmi_py2.yml
 
-conda deactivate py2
+conda deactivate
