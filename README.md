@@ -142,7 +142,7 @@ sh anaconda_setup.sh
 Alternatively, create the environment from the provided `.yml` file:
 
 ```
-conda env create -f environment_rmi.yml
+conda env create -f ./inst/yml/environment_rmi_py3.yml
 ```
 
 ## 2. Configuring the instance
