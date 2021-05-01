@@ -46,7 +46,7 @@ conda install dash
 
 # r lib manual dependency installs
 conda install boost=1.73.0 # RSQLite dependency
-conda install openblas==0.3.7 #  preprocesscore dependency
+conda install openblas=0.3.7 #  preprocesscore dependency
 
 # use bioconda to bypass permissions issues
 conda install -c bioconda r-xml2 
