@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 
 # Author: Sean Maden
-# Install and manage anaconda environments for recountmethylation_instance
-# This script should be runnable on Mac, Linux, or within Ubuntu for Windows.
+# 
+# Install and manage Anaconda environments for recountmethylation_instance
+# This script should be runnable on Mac, Linux, or within Ubuntu for Windows, 
+# with conda already installed. It creates 2 virtual environments, `py3`, 
+# which is the main environment to manage an instance and synchronize data, 
+# and `py2`, which is a secondary environment to run the MetaSRA-pipeline.
 
 #----------------------------------------
 # install python distros for environments
@@ -17,6 +21,7 @@ conda install -c bioconda bioconductor-biocinstaller
 # clone dependency repos
 #-----------------------
 git clone https://github.com/metamaden/recountmethylation_instance
+cd recountmethylation_instance
 git clone https://github.com/metamaden/recountmethylation_server
 git clone https://github.com/metamaden/recountmethylation.pipeline
 git clone https://github.com/metamaden/MetaSRA-pipeline
@@ -26,13 +31,14 @@ git clone https://github.com/metamaden/MetaSRA-pipeline
 # main environment, py3
 #----------------------
 # set up environment with python3, R, other dependencies
-conda create -n py3 python=3.7.0
-conda activate py3
+conda create -n py3 python=3.7.0; conda activate py3
 
 # additional dependencies
 conda install -c anaconda mongodb
 conda install -c anaconda sqlite3
 conda install r=3.6.0
+
+# install entrez direct utilities
 
 # required python3 libs
 conda install pandas=0.25.1
@@ -46,99 +52,66 @@ conda install dash
 
 # r lib manual dependency installs
 conda install boost=1.73.0 # RSQLite dependency
-conda install openblas=0.3.7 #  preprocesscore dependency
+conda install openblas #  preprocesscore dependency
 
 # use bioconda to bypass permissions issues
 conda install -c bioconda r-xml2 
 conda install -c bioconda r-rlang
 conda install -c bioconda r-nlme
 conda install -c bioconda r-cluster
+conda install -c bioconda dplyr
 conda install -c bioconda bioconductor-biobase
 conda install -c bioconda bioconductor-geoquery
 conda install -c bioconda bioconductor-bumphunter
 conda install -c bioconda bioconductor-genefilter
-
-# BiocManager::install("preprocessCore")
-# BiocManager::install("preprocessCore", configure.args="--disable-threading")
+conda install -c bioconda bioconductor-rhdf5
 conda install -c bioconda bioconductor-preprocesscore
-# conda install -c bioconda/label/gcc7 bioconductor-preprocesscore
-conda update curl
+# conda update curl
 R
+install.packages("dplyr")
 install.packages("BiocManager")
+install.packages("data.table")
 BiocManager::install("RSQLite")
+BiocManager::install("S4Vectors")
 BiocManager::install("SummarizedExperiment")
 BiocManager::install("GenomicFeatures")
 BiocManager::install("AnnotationDbi")
-BiocManager::install("bumphunter")
 BiocManager::install("minfi")
-BiocManager::install("minfiData") 
+BiocManager::install("minfiData")
 BiocManager::install("minfiDataEPIC")
-BiocManager::install("rhdf5")
 BiocManager::install("HDF5Array")
-BiocManager::install("data.table")
+quit()
+
+# install pipeline lib
+R CMD INSTALL recountmethylation.pipeline
 
 # get the environment.yml file
-conda env export > environment_py3.yml
+conda env export > environment_rmi_py3.yml
 
 conda deactivate py3
 
-#---------------------------------
-# environment for MetaSRA-pipeline
-#---------------------------------
+#--------------------------------------
+# environment for MetaSRA-pipeline, py2
+#--------------------------------------
 # optional, run if metadata mapping with the pipeline is desired
-conda create -n py2 python=2.7
-conda activate py2
-conda install numpy scipy scikit-learn setuptools marisa-trie dill nltk
-pip install snakemake
+conda create -n py2 python=2.7; conda activate py2
+
+# install python2 libs
+conda install numpy 
+conda install scipy
+conda install scikit-learn
+conda install setuptools
+conda install marisa-trie
+conda install dill
+conda install nltk
+conda install snakemake
 
 # further steps to set up the pipeline
 python2 $setupscriptspath"punkt_setup.py"
 python2 $setupscriptspath"punkt_setup.py" # get punkt for nltk
 sh $setupscriptspath"msrap_setup.sh" # run pipeline setup script
 
+# get the environment.yml file
+conda env export > environment_rmi_py2.yml
 
-
-
-
-
-conda git clone https://github.com/metamaden/recountmethylation_instance
-conda git clone https://github.com/metamaden/recountmethylation_server
-conda git clone https://github.com/metamaden/recountmethylation.pipeline
-conda git clone https://github.com/metamaden/recount.synth
-conda git clone https://github.com/metamaden/MetaSRA-pipeline
-
-conda listenv
-
-# install python3 dependencies
-conda switch # switch to python3 env
-conda install pymongo celery plotly pandas dash snakemake
-conda install -c anaconda mongodb
-
-python3 -m pip install pymongo
-python3 -m pip install celery
-python3 -m pip install plotly
-python3 -m pip install pandas
-python3 -m pip install dash
-python3 -m pip install snakemake
-conda install -c anaconda mongodb
-
-# install python2 dependencies
-conda switch # switch to python3 env
-conda install numpy scipy scikit-learn setuptools marisa-trie dill nltk
-
-python2 -m pip install numpy 
-python2 -m pip install scipy 
-python2 -m pip install scikit-learn
-python2 -m pip install setuptools
-python2 -m pip install marisa-trie
-python2 -m pip install dill
-python2 -m pip install nltk
-
-# get punkt for nltk
-python2 $setupscriptspath"punkt_setup.py"
-
-# setup up MetaSRA-pipeline
-sh $setupscriptspath"msrap_setup.sh"
-
-# run R setup
-Rscript $setupscriptspath"r_setup.R"
+conda deactivate py2
