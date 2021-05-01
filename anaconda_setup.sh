@@ -22,9 +22,9 @@ git clone https://github.com/metamaden/recountmethylation.pipeline
 git clone https://github.com/metamaden/MetaSRA-pipeline
 #conda git clone https://github.com/metamaden/recount.synth
 
-#-----------------
-# main environment
-#-----------------
+#----------------------
+# main environment, py3
+#----------------------
 # set up environment with python3, R, other dependencies
 conda create -n py3 python=3.7.0
 conda activate py3
@@ -35,14 +35,14 @@ conda install -c anaconda sqlite3
 conda install r=3.6.0
 
 # required python3 libs
+conda install pandas=0.25.1
 conda install pymongo=3.7.2 
 conda install celery
-conda install pandas=0.25.1
-pip install snakemake=6.1.2
+conda install snakemake
 
 # optional python3 libs
 conda install plotly=4.14.3
-conda install dash=1.20.1
+conda install dash
 
 # r lib manual dependency installs
 conda install boost=1.73.0 # RSQLite dependency
