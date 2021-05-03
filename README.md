@@ -6,8 +6,8 @@ Set up and maintain an instance, or synchronization, of public DNA methylation (
 [Gene Expression Omnibus (GEO)](https://www.ncbi.nlm.nih.gov/geo/). The `recountmethylation_instance` 
 resource provides a `snakemake` workflow including all steps to create harmonized HDF5 `.h5` and 
 HDF5-SummarizedExperiment `h5se` database files of compiled and harmonized DNAm array assays and 
-sample metadata. Expedited setup of a synchronization environment is supported using `sh` or conda. 
-Workflow functions may be accessed using `snakemake` rules defined in the provided `Snakefile` script.
+sample metadata. Expedited setup of a synchronization environment is supported using `sh` or conda 
+(Tutorial, below).
 
 # Who is this resource for?
 
@@ -44,13 +44,10 @@ If you find `recountmethylation_instance` useful, the following resources may al
 
 # Dependencies
 
-Dependencies to run an instance are shown in the below tables. The provided setup scripts help with
-automatic dependency installations (Tutorial, below). 
-
-Tables show the dependency name (column 1), type (column 2), confirmed version (column 3), and 
-requirement (column 4). Instances were confirmed to work with the indicated versions (column 2), and in 
-many cases can work with more recent versions. Several dependencies are optional to run specific 
-features of an instance, as indicated in the "Required?" column.
+Dependencies to run an instance are shown in the below tables showing dependency name (column 1), type (column 2), 
+confirmed version (column 3), and requirement (column 4). Instances were confirmed to work with the indicated 
+versions (column 2), and in many cases can work with more recent versions. Several dependencies are optional to 
+run specific features of an instance, as indicated in the "Required?" column.
 
 Main software and programming language dependencies:
 
