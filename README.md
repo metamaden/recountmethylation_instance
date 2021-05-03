@@ -4,9 +4,10 @@ Authors: Sean Maden, Reid Thompson, Kasper Hansen, Abhi Nellore
 
 Set up and maintain an instance, or synchronization, of public DNA methylation (DNAm) arrays from the 
 [Gene Expression Omnibus (GEO)](https://www.ncbi.nlm.nih.gov/geo/). The `recountmethylation_instance` 
-resource provides the means of setting up an environment for synchronization, including all steps to 
-create harmonized HDF5 `.h5` and HDF5-SummarizedExperiment `h5se` database files. Workflow functions 
-may be accessed using `snakemake` rules defined in the provided `Snakefile` script.
+resource provides a `snakemake` workflow including all steps to create harmonized HDF5 `.h5` and 
+HDF5-SummarizedExperiment `h5se` database files of compiled and harmonized DNAm array assays and 
+sample metadata. Expedited setup of a synchronization environment is supported using `sh` or conda. 
+Workflow functions may be accessed using `snakemake` rules defined in the provided `Snakefile` script.
 
 # Who is this resource for?
 
@@ -144,6 +145,10 @@ Alternatively, create the environment from the provided `.yml` file:
 ```
 conda env create -f ./inst/yml/environment_rmi_py3.yml
 ```
+
+This will set up the main environment, called `py3,` to run the core data processing rules. 
+For running MetaSRA-pipeline, you may either set up a Python 2 environment or run the rules 
+manually if a Python 2 alias is callable from the `py3` environment.
 
 ## 2. Configuring the instance
  
