@@ -11,17 +11,11 @@ sample metadata. Expedited setup of a synchronization environment is supported u
 
 # Who is this resource for?
 
-The `recountmethylation_instance` resource powers comprehensive and semi-automated download, 
-harmonization, and compilation of DNAm array data from across many samples and studies. It can handle data
-from tens of thousands of samples and hundreds of studies. This is accomplished with features like file 
-versioning with timestamps, extensive quality filters and sanity checks, and efficient handling of 
-large datasets out of memory or with proper data formats.
-
-If you are instead obtaining data from just one or a few samples or studies from GEO, there are several 
-more lightweight approaches available to you, including manual download of files from the GEO website. 
-Programmatic options are made available in various R/Bioconductor libraries, including functions provided 
-in the [`GEOquery`](https://www.bioconductor.org/packages/release/bioc/html/GEOquery.html) library, as well 
-as the `getGenomicRatioSetFromGEO()` function from the [`minfi`](http://bioconductor.org/packages/release/bioc/html/minfi.html) 
+The `recountmethylation_instance` resource can handle data compilations comprising upwards of tens of 
+thousands of samples and hundreds of studies. If you are instead obtaining data from just one or a few 
+samples or studies from GEO, there are several more lightweight approaches available to you, including 
+manual download of files from the GEO website. Programmatic options are made available in various 
+R/Bioconductor libraries, including functions provided in the [`GEOquery`](https://www.bioconductor.org/packages/release/bioc/html/GEOquery.html) library, as well as the `getGenomicRatioSetFromGEO()` function from the [`minfi`](http://bioconductor.org/packages/release/bioc/html/minfi.html) 
 library, and the `gds_idatquery()` and `gds_idat2rg()` functions from the [`recountmethylation`](https://www.bioconductor.org/packages/devel/bioc/html/recountmethylation.html) library.
 
 # Additional resources
