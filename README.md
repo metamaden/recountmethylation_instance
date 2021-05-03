@@ -353,9 +353,9 @@ all or only some of the available metadata processing rules. Available rules inc
             (provided sex information).
 * `run_msrap`: Run the MetaSRA-pipeline. This produces sample type predictions, as well as ENCODE ontology terms 
              from several major ontology dictionaries.
-* `do_dnam_md`: Get DNAm-derived metadata, including model-based predictions for age, sex, and blood cell type   
-              fractions, and quality metrics, including BeadArray controls and median log2 methylated and    
-              unmethylated signals. This should be run after IDAT compilations are complete.
+* `do_dnam_md`: Get DNAm-derived metadata (model-based predictions for age, sex, and blood cell types) and quality 
+              metrics (BeadArray controls, methylated signal, unmethylated signal, and predictated replicates). 
+              This should be run after all 3 types of h5se compilations are complete.
               
 Once one or all of these rules have been successfully run, compile and append the harmonized metadata to the available DNAm data compilations:
 
