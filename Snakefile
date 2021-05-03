@@ -150,7 +150,7 @@ rule process_soft:
 rule apply_jsonfilt:
     input: os.path.join(srcpath, "jsonfilt.R")
     log: os.path.join(logspath, "apply_jsonfilt_"+ts+".log")
-    shell: "Rscript {input} > {log}"
+    shell: "Rscript {input} >& {log}"
 
 #rule soft_cleanup:
 #    input: os.path.join(srcpath, "process_soft.py")
@@ -172,55 +172,55 @@ rule report:
 rule new_instance_md:
     input: os.path.join(rmp_path, "new_instance_md.R")
     log: os.path.join(logspath, "new_instance_md_"+ts+".log")
-    shell: "Rscript {input} > {log}"
+    shell: "Rscript {input} >& {log}"
 
 # Run the full pipeline (makes h5 and h5se files in 3 formats)
 rule run_dnam_pipeline:
     input: os.path.join(rmp_path, "run_dnam_pipeline.R")
     log: os.path.join(logspath, "run_dnam_pipeline_"+ts+".log")
-    shell: "Rscript {input} > {log}"
+    shell: "Rscript {input} >& {log}"
 
 # Compile the red/green signal data table files
 rule get_rg_compilations:
     input: os.path.join(rmp_path, "get_rg_compilations.R")
     log: os.path.join(logspath, "get_rg_compilations_"+ts+".log")
-    shell: "Rscript {input} > {log}"
+    shell: "Rscript {input} >& {log}"
 
 # Make the h5 rg database
 rule get_h5db_rg:
     input: os.path.join(rmp_path, "get_h5db_rg.R")
     log: os.path.join(logspath, "get_h5db_rg_"+ts+".log")
-    shell: "Rscript {input} > {log}"
+    shell: "Rscript {input} >& {log}"
 
 # Make the h5se rg database
 rule get_h5se_rg:
     input: os.path.join(rmp_path, "get_h5se_rg.R")
     log: os.path.join(logspath, "get_h5se_rg_"+ts+".log")
-    shell: "Rscript {input} > {log}"
+    shell: "Rscript {input} >& {log}"
 
 # Make the h5 gm database
 rule get_h5db_gm:
     input: os.path.join(rmp_path, "get_h5db_gm.R")
     log: os.path.join(logspath, "get_h5db_gm_"+ts+".log")
-    shell: "Rscript {input} > {log}"
+    shell: "Rscript {input} >& {log}"
 
 # Make the h5 gm database
 rule get_h5se_gm:
     input: os.path.join(rmp_path, "get_h5se_gm.R")
     log: os.path.join(logspath, "get_h5se_gm_"+ts+".log")
-    shell: "Rscript {input} > {log}"
+    shell: "Rscript {input} >& {log}"
 
 # Make the h5 gr database
 rule get_h5db_gr:
     input: os.path.join(rmp_path, "get_h5db_gr.R")
     log: os.path.join(logspath, "get_h5db_gr_"+ts+".log")
-    shell: "Rscript {input} > {log}"
+    shell: "Rscript {input} >& {log}"
 
 # Make the h5se gr database
 rule get_h5se_gr:
     input: os.path.join(rmp_path, "get_h5se_gr.R")
     log: os.path.join(logspath, "get_h5se_gr_"+ts+".log")
-    shell: "Rscript {input} > {log}"
+    shell: "Rscript {input} >& {log}"
 
 #------------------------
 # Process sample metadata
@@ -231,28 +231,28 @@ rule get_h5se_gr:
 rule run_msrap:
     input: os.path.join(srcpath, "run_msrap.R")
     log: os.path.join(logspath, "run_msrap_"+ts+".log")
-    shell: "Rscript {input} > {log}"
+    shell: "Rscript {input} >& {log}"
 
 # Map and harmonize metadata from filtered JSON files
 rule do_mdmap:
     input: os.path.join(rmp_path, "do_mdmap.R")
     log: os.path.join(logspath, "do_mdmap_"+ts+".log")
-    shell: "Rscript {input} > {log}"
+    shell: "Rscript {input} >& {log}"
 
 # Get DNAm-derived md and qc metrics
 rule do_dnam_md:
     input: os.path.join(rmp_path, "do_dnam_md.R")
     log: os.path.join(logspath, "do_dnam_md_"+ts+".log")
-    shell: "Rscript {input} > {log}"
+    shell: "Rscript {input} >& {log}"
 
 # Get composite md from mdfinal, mdpred, mdqc
 rule make_md_final:
     input: os.path.join(rmp_path, "make_md_final.R")
     log: os.path.join(logspath, "make_md_final_"+ts+".log")
-    shell: "Rscript {input} > {log}"
+    shell: "Rscript {input} >& {log}"
 
 # Append updated md to available compilation files
 rule append_md:
     input: os.path.join(rmp_path, "append_md.R")
     log: os.path.join(logspath, "append_md_"+ts+".log")
-    shell: "Rscript {input} > {log}"
+    shell: "Rscript {input} >& {log}"
