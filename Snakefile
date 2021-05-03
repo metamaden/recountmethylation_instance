@@ -241,8 +241,8 @@ rule do_mdmap:
 
 # Get DNAm-derived md and qc metrics
 rule do_dnam_md:
-    input: os.path.join(rmp_path, "make_dnam_md.R")
-    log: os.path.join(logspath, "make_dnam_md_"+ts+".log")
+    input: os.path.join(rmp_path, "do_dnam_md.R")
+    log: os.path.join(logspath, "do_dnam_md_"+ts+".log")
     shell: "Rscript {input} > {log}"
 
 # Get composite md from mdfinal, mdpred, mdqc
