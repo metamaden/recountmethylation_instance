@@ -60,7 +60,7 @@ sys.path.insert(0, srcpath); from utilities import gettime_ntp
 # pipeline repo
 rmp_path = os.path.join("recountmethylation.pipeline", "inst", "snakemake")
 # research synth resources repo
-rsynth_path = os.path.join("recount.synth", "inst", "scripts", "snakemake")
+# rsynth_path = os.path.join("recount.synth", "inst", "scripts", "snakemake")
 # logs info
 logsfn = "snakemakelogs"; logspath = os.path.join(logsfn)
 
@@ -235,24 +235,24 @@ rule run_msrap:
 
 # Map and harmonize metadata from filtered JSON files
 rule do_mdmap:
-    input: os.path.join(rsynth_path, "do_mdmap.R")
+    input: os.path.join(rmp_path, "do_mdmap.R")
     log: os.path.join(logspath, "do_mdmap_"+ts+".log")
     shell: "Rscript {input} > {log}"
 
 # Get DNAm-derived md and qc metrics
 rule do_dnam_md:
-    input: os.path.join(rsynth_path, "make_dnam_md.R")
+    input: os.path.join(rmp_path, "make_dnam_md.R")
     log: os.path.join(logspath, "make_dnam_md_"+ts+".log")
     shell: "Rscript {input} > {log}"
 
 # Get composite md from mdfinal, mdpred, mdqc
 rule make_md_final:
-    input: os.path.join(rsynth_path, "make_md_final.R")
+    input: os.path.join(rmp_path, "make_md_final.R")
     log: os.path.join(logspath, "make_md_final_"+ts+".log")
     shell: "Rscript {input} > {log}"
 
 # Append updated md to available compilation files
 rule append_md:
-    input: os.path.join(rsynth_path, "append_md.R")
+    input: os.path.join(rmp_path, "append_md.R")
     log: os.path.join(logspath, "append_md_"+ts+".log")
     shell: "Rscript {input} > {log}"
