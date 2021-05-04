@@ -74,13 +74,7 @@ the following libraries are recommended:
 |     [dill](https://pypi.org/project/dill/)    |  Python 2 library  | 0.2.8.2 |  no  |
 |     [nltk](https://pypi.org/project/nltk/)     |  Python 2 library  |   3.4   |  no  |
 
-# Tutorial
-
-This tutorial shows how to set up and initiate synchronization of public DNA methylation array data. 
-Note that most steps involve calling `snakemake`rules defined in the provided `Snakefile` script. Logs, 
-including stdout, for each rule called are stored by default in the "snakemakelogs" subdirectory.
-
-## 1. Setup
+# Setup
 
 First clone the latest version of the `recountmethylation_instance` repo from GitHub.
 
@@ -88,16 +82,10 @@ First clone the latest version of the `recountmethylation_instance` repo from Gi
 git clone https://github.com/metamaden/recountmethylation_instance
 ```
 
-For this example, DNAm array data run using the Illumina Infinium HumanMethylation 450K array platform will be considered.
-Rename the cloned repo to reflect this.
+Next, choose a setup option below. Several setup options have been provided, so that you may 
+select the best option for your OS environment.
 
-```
-mv recountmethylation_instance recountmethylation_instance_hm450k
-cd recountmethylation_instance_hm450k
-```
-Several setup options have been provided, so that you may select the best option for your OS environment.
-
-### 1a. Setup with sh script
+## 1a. Setup with sh script
 
 For setup with `sh`, run the provided script `setup_instance.sh`:
 
@@ -105,7 +93,7 @@ For setup with `sh`, run the provided script `setup_instance.sh`:
 sh setup_instance.sh
 ```
 
-### 1b. Setup with a conda virtual environment
+## 1b. Setup with a conda virtual environment
 
 For setup using virtual environments with `conda`, you may run the script `anaconda_setup.sh`:
 
@@ -125,12 +113,35 @@ For running MetaSRA-pipeline, you may either set up an additional Python 2 envir
 run the corresponding `snakemake` rules manually if a Python 2 alias is callable from the 
 `py3` environment.
 
-### 1c. Setup with a Docker container (pending)
+## 1c. Setup with a Docker container (pending)
 
 The provided Dockerfile, also available on Docker Hub ([link](https://hub.docker.com/r/metamaden/recountmethylation_docker)), 
 allows for automated container setup with most of the required dependencies except MongoDB. 
 MongoDB access from the container may be supported in the future using an iteration of the
 Docker Compose `yml` file at `./inst/yml/docker-compose.yml`.
+
+# Tutorial
+
+This tutorial shows how to set up and initiate synchronization of public DNA methylation array data. 
+Note that most steps involve calling `snakemake`rules defined in the provided `Snakefile` script. Logs, 
+including stdout, for each rule called are stored by default in the "snakemakelogs" subdirectory.
+
+## 1. Setup
+
+For this example, DNAm array data run using the Illumina Infinium HumanMethylation 450K array 
+platform will be considered. First clone the resource from GitHub, then rename the cloned repo.
+
+```
+git clone https://github.com/metamaden/recountmethylation_instance
+mv recountmethylation_instance recountmethylation_instance_hm450k
+cd recountmethylation_instance_hm450k
+```
+
+Next, we can perform setup with `setup_instance.sh`:
+
+```
+sh setup_instance.sh
+```
 
 ## 2. Configuring the instance
  
