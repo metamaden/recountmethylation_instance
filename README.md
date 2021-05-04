@@ -129,7 +129,8 @@ run the corresponding `snakemake` rules manually if a Python 2 alias is callable
 
 The provided Dockerfile, also available on Docker Hub ([link](https://hub.docker.com/r/metamaden/recountmethylation_docker)), 
 allows for automated container setup with most of the required dependencies except MongoDB. 
-MongoDB access is planned to be supported using the Docker compose file at `./inst/yml/docker-compose.yml`.
+MongoDB access from the container may be supported in the future using an iteration of the
+Docker Compose `yml` file at `./inst/yml/docker-compose.yml`.
 
 ## 2. Configuring the instance
  
