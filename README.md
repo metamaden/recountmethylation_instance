@@ -14,7 +14,7 @@ sample metadata. Expedited setup of a synchronization environment is supported u
 The `recountmethylation_instance` resource can handle data compilations comprising upwards of tens of 
 thousands of samples and hundreds of studies. If you are instead obtaining data from just one or a few 
 samples or studies from GEO, there are several more lightweight approaches available to you, including 
-manual download of files from the GEO website and programmatic options including functions provided in the [`GEOquery`](https://www.bioconductor.org/packages/release/bioc/html/GEOquery.html) library, the `getGenomicRatioSetFromGEO()` 
+manual download of files from the GEO website, and programmatic options including functions provided in the [`GEOquery`](https://www.bioconductor.org/packages/release/bioc/html/GEOquery.html) library, the `getGenomicRatioSetFromGEO()` 
 function from the [`minfi`](http://bioconductor.org/packages/release/bioc/html/minfi.html) library, and 
 the `gds_idatquery()` and `gds_idat2rg()` functions from the [`recountmethylation`](https://www.bioconductor.org/packages/devel/bioc/html/recountmethylation.html) library.
 
