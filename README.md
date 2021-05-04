@@ -18,24 +18,6 @@ manual download of files from the GEO website and programmatic options including
 function from the [`minfi`](http://bioconductor.org/packages/release/bioc/html/minfi.html) library, and 
 the `gds_idatquery()` and `gds_idat2rg()` functions from the [`recountmethylation`](https://www.bioconductor.org/packages/devel/bioc/html/recountmethylation.html) library.
 
-# Additional resources
-
-If you find `recountmethylation_instance` useful, the following resources may also be helpful.
-
-## Packages
-
-* `recountmethylation`. R/Bioconductor package providing utilities to access and analyze public DNAm array data from GEO. [10.18129/B9.bioc.recountmethylation](https://doi.org/doi:10.18129/B9.bioc.recountmethylation)
-
-* `minfi`. R/Bioconductor package for analysis of DNA methylation arrays. [10.18129/B9.bioc.minfi](10.18129/B9.bioc.minfi )
-
-* `HDF5Array`. R/Bioconductor package for handling HDF5 and HDF5SummarizedExperiment objects with DelayedArray-powered backends. [10.18129/B9.bioc.HDF5Array](10.18129/B9.bioc.HDF5Array) 
-
-## Papers
-
-* Sean K Maden, Reid F Thompson, Kasper D Hansen, Abhinav Nellore, *Human methylome variation across Infinium 450K data on the Gene Expression Omnibus*, NAR Genomics and Bioinformatics, Volume 3, Issue 2, June 2021, https://doi.org/10.1093/nargab/lqab025 
-
-* Timothy J Triche Jr, Daniel J Weisenberger, David Van Den Berg, Peter W Laird, Kimberly D Siegmund, *Low-level processing of Illumina Infinium DNA Methylation BeadArrays*, Nucleic Acids Research, Volume 41, Issue 7, April 2013, https://doi.org/10.1093/nar/gkt090
-
 # Dependencies
 
 Dependencies to run an instance are shown in the below tables showing dependency name (column 1), type (column 2), 
@@ -359,3 +341,21 @@ Once one or all of these rules have been successfully run, compile and append th
 snakemake --cores 1 make_md_final
 snakemake --cores 1 append_md
 ```
+
+# Additional resources
+
+If you find `recountmethylation_instance` useful, the following resources may also be helpful.
+
+## Packages
+
+* `recountmethylation`. R/Bioconductor package providing utilities to access and analyze public DNAm array data from GEO. [10.18129/B9.bioc.recountmethylation](https://doi.org/doi:10.18129/B9.bioc.recountmethylation)
+
+* `minfi`. R/Bioconductor package for analysis of DNA methylation arrays. [10.18129/B9.bioc.minfi](10.18129/B9.bioc.minfi )
+
+* `HDF5Array`. R/Bioconductor package for handling HDF5 and HDF5SummarizedExperiment objects with DelayedArray-powered backends. [10.18129/B9.bioc.HDF5Array](10.18129/B9.bioc.HDF5Array) 
+
+## Papers
+
+* Sean K Maden, Reid F Thompson, Kasper D Hansen, Abhinav Nellore, *Human methylome variation across Infinium 450K data on the Gene Expression Omnibus*, NAR Genomics and Bioinformatics, Volume 3, Issue 2, June 2021, https://doi.org/10.1093/nargab/lqab025 
+
+* Timothy J Triche Jr, Daniel J Weisenberger, David Van Den Berg, Peter W Laird, Kimberly D Siegmund, *Low-level processing of Illumina Infinium DNA Methylation BeadArrays*, Nucleic Acids Research, Volume 41, Issue 7, April 2013, https://doi.org/10.1093/nar/gkt090
