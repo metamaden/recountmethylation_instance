@@ -76,14 +76,16 @@ the following libraries are recommended:
 
 # Setup
 
-First clone the latest version of the `recountmethylation_instance` repo from GitHub.
+First clone the latest version of the `recountmethylation_instance` repo from GitHub, then 
+navigate into the directory.
 
 ```
 git clone https://github.com/metamaden/recountmethylation_instance
+cd recountmethylation_instance
 ```
 
-Next, choose a setup option below. Several setup options have been provided, so that you may 
-select the best option for your OS environment.
+Next, choose a setup option below. Several options have been provided to support various 
+OS environments.
 
 ## 1a. Setup with sh script
 
