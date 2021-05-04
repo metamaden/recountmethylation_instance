@@ -120,10 +120,12 @@ conda env create -f ./inst/yml/environment_rmi_py3.yml
 ```
 
 This will set up the main environment, called `py3,` to run the core data processing rules. 
-For running MetaSRA-pipeline, you may either set up a Python 2 environment or run the rules 
-manually if a Python 2 alias is callable from the `py3` environment.
 
-##1 1c. Setup with a Docker container (pending)
+For running MetaSRA-pipeline, you may either set up an additional Python 2 environment or 
+run the corresponding `snakemake` rules manually if a Python 2 alias is callable from the 
+`py3` environment.
+
+### 1c. Setup with a Docker container (pending)
 
 The provided Dockerfile, also available on Docker Hub ([link](https://hub.docker.com/r/metamaden/recountmethylation_docker)), 
 allows for automated container setup with most of the required dependencies except MongoDB. 
