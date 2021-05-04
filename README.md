@@ -4,10 +4,9 @@ Authors: Sean Maden, Reid Thompson, Kasper Hansen, Abhi Nellore
 
 Set up and maintain an instance, or synchronization, of public DNA methylation (DNAm) arrays from the 
 [Gene Expression Omnibus (GEO)](https://www.ncbi.nlm.nih.gov/geo/). The `recountmethylation_instance` 
-resource provides a `snakemake` workflow including all steps to create harmonized HDF5 `.h5` and 
-HDF5-SummarizedExperiment `h5se` database files of compiled and harmonized DNAm array assays and 
-sample metadata. Expedited setup of a synchronization environment is supported using `sh` or conda 
-(Tutorial, below).
+resource provides a `snakemake` workflow including all steps to create HDF5 `.h5` and HDF5-SummarizedExperiment 
+`h5se` database files of compiled and harmonized DNAm array assays and sample metadata. Expedited setup of a 
+synchronization environment is supported using `sh` or `conda` (Tutorial, below).
 
 # Who is this resource for?
 
@@ -120,7 +119,8 @@ run the corresponding `snakemake` rules manually if a Python 2 alias is callable
 The provided Dockerfile, also available on Docker Hub ([link](https://hub.docker.com/r/metamaden/recountmethylation_docker)), 
 allows for automated container setup with most of the required dependencies except MongoDB. 
 MongoDB access from the container may be supported in the future using an iteration of the
-Docker Compose `yml` file at `./inst/yml/docker-compose.yml`.
+Docker Compose `yml` file at `./inst/yml/docker-compose.yml`. If you know the answer, please feel free to open an 
+issue or pull request :^)
 
 # Tutorial
 
