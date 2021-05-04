@@ -126,7 +126,7 @@ This tutorial shows how to set up and initiate synchronization of public DNA met
 Note that most steps involve calling `snakemake`rules defined in the provided `Snakefile` script. Logs, 
 including stdout, for each rule called are stored by default in the "snakemakelogs" subdirectory.
 
-## 1. Setup
+## 1. Set up the instance
 
 For this example, DNAm array data run using the Illumina Infinium HumanMethylation 450K array 
 platform will be considered. First clone the resource from GitHub, then rename the cloned repo.
@@ -143,7 +143,7 @@ Next, we can perform setup with `setup_instance.sh`:
 sh setup_instance.sh
 ```
 
-## 2. Configuring the instance
+## 2. Configure the instance
  
 Next, we need to configure the instance, including specifying the array platform to target, and 
 specifying sample IDs to exclude.
@@ -175,10 +175,10 @@ Entering `Y` returns:
 
 Type `1` to specify the HM450K platform.
 
-### 2b. Run a new EDirect query
+### 2b. Run a new Entrez Utilities query
 
-Data files are recognized by queries to the GEO DataSets API using EDirect software. Running a fresh query
-will identify all valid data files for the targeted platform. To do this, enter:
+Data files are recognized by queries to the GEO DataSets API using Entrez Utilities software. Running 
+a fresh query will identify all valid data files for the targeted platform. To do this, enter:
 
 ```
 snakemake --cores 1 new_eqd
