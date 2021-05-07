@@ -35,6 +35,9 @@ python2 $scriptsdir/"punkt_setup.py"
 
 # setup up MetaSRA-pipeline
 sh $scriptsdir/"msrap_setup.sh"
+cd MetaSRA-pipeline
+git clone https://www.github.com/ahupp/bktree
+cd -
 
 # run R setup
 Rscript $setupscriptspath"r_setup.R"
