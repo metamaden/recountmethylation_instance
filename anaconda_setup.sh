@@ -116,6 +116,11 @@ python2 $setupscriptspath"punkt_setup.py"
 python2 $setupscriptspath"punkt_setup.py" # get punkt for nltk
 sh $setupscriptspath"msrap_setup.sh" # run pipeline setup script
 
+# clone bktree package
+cd MetaSRA-pipeline
+git clone https://www.github.com/ahupp/bktree
+cd -
+
 # get the environment.yml file
 # conda env export > environment_rmi_py2.yml
 
