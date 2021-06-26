@@ -40,7 +40,7 @@ git clone https://www.github.com/ahupp/bktree
 cd -
 
 # run R setup
-Rscript $setupscriptspath"r_setup.R"
+Rscript $scriptsdir/"r_setup.R"
 R CMD INSTALL recountmethylation.pipeline
 R CMD INSTALL recount.synth
 
