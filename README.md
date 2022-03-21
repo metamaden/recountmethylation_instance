@@ -114,14 +114,6 @@ For running MetaSRA-pipeline, you may either set up an additional Python 2 envir
 run the corresponding `snakemake` rules manually if a Python 2 alias is callable from the 
 `py3` environment.
 
-## 1c. Setup with a Docker container (pending)
-
-The provided Dockerfile, also available on Docker Hub ([link](https://hub.docker.com/r/metamaden/recountmethylation_docker)), 
-allows for automated container setup with most of the required dependencies except MongoDB. 
-MongoDB access from the container may be supported in the future using an iteration of the
-Docker Compose `yml` file at `./inst/yml/docker-compose.yml`. If you know the answer, please feel free to open an 
-issue or pull request :^)
-
 # Tutorial
 
 This tutorial shows how to set up and initiate synchronization of public DNA methylation array data. 
@@ -156,7 +148,7 @@ The HM450K platform is presently targeted by default, but this may change. To ex
 the platform to target, run the following:
 
 ```
-snakemake --cores 1 set_acc
+python3 ./recountmethylation_server/src/set_acc
 ```
 
 This produces the dialogue:
