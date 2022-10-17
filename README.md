@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/337589428.svg)](https://zenodo.org/badge/latestdoi/337589428)
+
 # recountmethylation_instance
 
 Authors: Sean Maden, Reid Thompson, Kasper Hansen, Abhi Nellore
