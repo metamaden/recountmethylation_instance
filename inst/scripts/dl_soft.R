@@ -66,7 +66,7 @@ for(gsei in gsevf){
   # try rename
   if(rename){
     if(file.exists(dest.fpath)){
-      new.fname <- paste0(c(gsei,ts.str,f), collapse = ".")
+      new.fname <- paste0(c(gsei,ts.str,soft.fname), collapse = ".")
       file.rename(dest.fpath, file.path(dfp, new.fname))
     } else{
       message("Couldn't find file to rename.")
