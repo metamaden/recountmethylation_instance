@@ -214,7 +214,15 @@ This creates a new subdirectory containing the instance metadata. This is also w
 generated metadata files will be stored, including metadata mapped from GSM JSON files and 
 DNAm model-based predicted metadata.
 
-## 3. Running the server
+## 3. Running the server and downloading files
+
+`recountmethylation_instance` uses the Entrez Direct queries in the previous section to make URLs
+to download study and sample datasets from the GEO servers. Running the server is a safe way to 
+ensure the correct files are downloaded and that downloaded files are tracked. If the server will
+not run continuously, or repeated attempts to complete server runs fail, you can still download the
+files using the provided `.R` scripts.
+
+### 3a. Running the server
 
 Before we can start downloading public data, we need to run the MongoDB service with sudo access. 
 This can be done with either:
@@ -263,6 +271,22 @@ snakemake --cores 1 server_dash
 ```
 
 Entering the displayed IP address into a browser tab will display the server dashboard.
+
+### 3b. Downloading SOFT and IDAT files with provided `.R` scripts
+
+An alternative method of obtaining study and sample data from the GEO servers is to use the provided 
+`.R` scripts. These scripts compare downloaded files to the full set of study/GSE and sample/GSM IDs, 
+and they will try downloading data for remaining IDs. To download remaining IDATs, use:
+
+```
+Rscript ./inst/scripts/dl_idats.R
+```
+
+To download SOFT files, run:
+
+```
+Rscript ./inst/scripts/dl_soft.R
+```
 
 ## 4. Reformatting and compiling data files
 
