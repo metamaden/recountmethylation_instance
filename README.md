@@ -310,18 +310,17 @@ Rscript ./inst/scripts/dl_soft.R
 
 Once data files have been downloaded, they can be prepared for compilation. 
 
-Over the course of the following steps, you may find there are unusual file type, such as files with `.txt` extension 
-instead of `.idat` (see below). 
+Over the course of the following steps, you may find unexpected file types have been downloaded, such as files with 
+`.txt.gz` extension that were downloaded to the `./recount-methylation-files/idats` folder (see below). These types of 
+anomalies are to be expected when performing a comprehensive acquisition and compilation of public data. 
 
 ![Expanded IDATs and .txt files.](img/example_idats-expand.PNG)
 
-These types of anomalies are to be expected when performing a comprehensive acquisition and compilation of public data. 
-The instance will be able to handle many of these types of anomalies, it is possible that new anomalous filenames and
-extensions can be encountered when compiling new datasets. 
-
-It is entirely up to you, the user, to decide how to handle files in these situations, and some acceptable practices 
-would be to manually delete these files or possibly move them to a new location and target them in a follow up compilation 
-effort.
+The instance will be able to handle many of these types of anomalies, however it is still possible new anomalous filenames and
+extensions can be encountered whenever new public data is compiled. It is entirely up to you, the user, to decide how to handle 
+files in these situations. For instance, you may choose to manually delete these files, or alternatively you could move them to 
+a new location (e.g. move `.txt` files to a new directory at  `./recount-methylation-files/txt/`) and then target them in a future 
+compilation.
 
 ### 4a. Sample IDATs
 
