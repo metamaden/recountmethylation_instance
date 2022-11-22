@@ -308,7 +308,20 @@ Rscript ./inst/scripts/dl_soft.R
 
 ## 4. Reformatting and compiling data files
 
-Once data files have been downloaded, they can be prepared for compilation.
+Once data files have been downloaded, they can be prepared for compilation. 
+
+Over the course of the following steps, you may find there are unusual file type, such as files with `.txt` extension 
+instead of `.idat` (see below). 
+
+![Expanded IDATs and .txt files.](img/example_idats-expand.PNG)
+
+These types of anomalies are to be expected when performing a comprehensive acquisition and compilation of public data. 
+The instance will be able to handle many of these types of anomalies, it is possible that new anomalous filenames and
+extensions can be encountered when compiling new datasets. 
+
+It is entirely up to you, the user, to decide how to handle files in these situations, and some acceptable practices 
+would be to manually delete these files or possibly move them to a new location and target them in a follow up compilation 
+effort.
 
 ### 4a. Sample IDATs
 
