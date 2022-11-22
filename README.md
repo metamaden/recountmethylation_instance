@@ -139,6 +139,8 @@ Next, we can perform setup with `setup_instance.sh`:
 sh setup_instance.sh
 ```
 
+After successfully completing the above setup steps, the top level of the new instance should look something like this:
+
 ![Top level of an instance after setup.](img/example_rmi_toplvl.PNG)
 
 ## 2. Configure the instance
@@ -217,6 +219,20 @@ generated metadata files will be stored, including metadata mapped from GSM JSON
 DNAm model-based predicted metadata.
 
 ## 3. Running the server and downloading files
+
+This section shows how to download datasets from the GEO servers to an instance. The files of interest 
+include the SOFT files stored under a unique GSE accession for each study, and a pair of IDAT files 
+for each unique GSM accession corresponding to a sample. These files are compressed, so you can expect
+new downloads to all have a `.gz` extension.
+
+For example, after successfully downloading a series of study SOFT files, the directory at 
+`./recount-methylation-files/gse_soft/` might look like this:
+
+![Compressed SOFT files](img/example_soft-compressed.PNG)
+
+And the directory at `./recount-methylation-files/idats/` might look something like this:
+
+![Compressed IDAT files](img/example_idats-compressed.PNG)
 
 `recountmethylation_instance` uses the Entrez Direct queries in the previous section to make URLs
 to download study and sample datasets from the GEO servers. Running the server is a safe way to 
