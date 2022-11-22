@@ -139,6 +139,8 @@ Next, we can perform setup with `setup_instance.sh`:
 sh setup_instance.sh
 ```
 
+![Top level of an instance after setup.](img/example_rmi_toplvl.PNG)
+
 ## 2. Configure the instance
  
 Next, we need to configure the instance, including specifying the array platform to target, and 
