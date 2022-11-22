@@ -8,11 +8,12 @@
 #
 
 # params/new function args
-dfp <- "gse_temp"
 base.url <- "ftp://ftp.ncbi.nlm.nih.gov/geo/series"
-eq.dirpath <- file.path("equery")
-idat.dirpath <- file.path("idats")
-soft.dirpath <- file.path("gse_soft")
+base.fpath <- "recount-methylation-files"
+dfp <- file.path(base.fpath, "temp", "gse_temp")
+eq.dirpath <- file.path(base.fpath, "equery")
+idat.dirpath <- file.path(base.fpath, "idats")
+soft.dirpath <- file.path(base.fpath, "gse_soft")
 rename <- TRUE
 verbose <- TRUE
 eq.str <- "gsequery_filt"

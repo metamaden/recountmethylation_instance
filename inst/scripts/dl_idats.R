@@ -10,10 +10,11 @@ rename <- TRUE
 ext <- "gz"
 expand <- FALSE
 verbose <- TRUE
-dfp <- "idats_temp2"
+base.fpath <- "recount-methylation-files"
+dfp <- file.path(base.fpath, "temp", "idats_temp")
 burl <-  paste0("ftp://ftp.ncbi.nlm.nih.gov/geo/samples/")
-idat.dirpath <- file.path("idats")
-eq.dirpath <- file.path("equery")
+idat.dirpath <- file.path(base.fpath, "idats")
+eq.dirpath <- file.path(base.fpath, "equery")
 eq.str <- "gsequery_filt"
 
 # get new timestamp
