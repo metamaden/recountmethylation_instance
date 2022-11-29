@@ -154,7 +154,7 @@ The HM450K platform is presently targeted by default, but this may change. To ex
 the platform to target, run the following:
 
 ```
-python3 ./recountmethylation_server/src/set_acc
+python3 ./recountmethylation_server/src/set_acc.py
 ```
 
 This produces the dialogue:
