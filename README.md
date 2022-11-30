@@ -391,8 +391,55 @@ snakemake --cores 1 process_soft
 snakemake --cores 1 apply_jsonfilt
 ```
 
-Once the `.json` files containing sample-specific metadata have been prepared, you have the option of running
-all or only some of the available metadata processing rules. Available rules include:
+As an example, a sample of the metadata for sample `GSM4671807` that were extracted from its experiment SOFT 
+and stored at `./gsm_soft/` appears as:
+
+```
+!Sample_title = K562 - control 1
+
+!Sample_geo_accession = GSM4671807
+
+!Sample_status = Public on Nov 23 2022
+
+...
+...
+
+!Sample_characteristics_ch1 = cell line: K562
+
+!Sample_characteristics_ch1 = disease: chronic myelogenous leukemia
+
+!Sample_characteristics_ch1 = treatment: control
+```
+
+By contrast, the JSON-formatted version of `GSM4671807`'s metadata is located at `./gsm_json/` and appears as:
+
+```
+[
+  {
+    "!Sample_title": "K562 - control 1",
+    "!Sample_geo_accession": "GSM4671807",
+    "!Sample_status": "Public on Nov 23 2022",
+    "!Sample_submission_date": "Jul 15 2020",
+    "!Sample_last_update_date": "Nov 23 2022",
+    "!Sample_type": "genomic",
+    "!Sample_channel_count": "1",
+    "!Sample_source_name_ch1": "control replicate 1",
+    "!Sample_organism_ch1": "Homo sapiens",
+    "!Sample_taxid_ch1": "9606",
+    "!Sample_characteristics_ch1": "cell line: K562",
+    "!Sample_characteristics_ch1.1": "disease: chronic myelogenous leukemia",
+    "!Sample_characteristics_ch1.2": "treatment: control",
+    "!Sample_treatment_protocol_ch1": "GSE154471\n",
+    "cell_line": "K562",
+    "treatment": "control"
+  }
+]
+```
+
+This JSON formatting is important because it allows the file to be read by the `MetaSRA-pipeline`.
+
+Once the `.json` files with sample-specific metadata have been prepared, you have the option of running
+any of the following available metadata processing rules:
 
 * `do_mdmap`: Map and harmonize metadata using the provided scripts. These scripts use regular expressions to 
             automatically detect and categorize tags in `.json` files, and then to uniformly format and 
