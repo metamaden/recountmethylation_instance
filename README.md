@@ -391,7 +391,8 @@ snakemake --cores 1 process_soft
 snakemake --cores 1 apply_jsonfilt
 ```
 
-As an example, SOFT-extracted metadata for `GSM4671807` would be stored at `./gsm_soft/` and look something like:
+As an example, SOFT-extracted metadata for [`GSM4671807`](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM4671807) 
+would be stored at `./gsm_soft/` and look something like:
 
 ```
 !Sample_title = K562 - control 1
