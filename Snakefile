@@ -229,9 +229,9 @@ rule get_h5se_gr:
 
 # Run the MetaSRA-pipeline
 rule run_msrap:
-    input: os.path.join(srcpath, "run_msrap.R")
+    input: os.path.join(srcpath, "run_msrap.py")
     log: os.path.join(logspath, "run_msrap_"+ts+".log")
-    shell: "Rscript {input} >& {log}"
+    shell: "python3 {input} >& {log}"
 
 # Map and harmonize metadata from filtered JSON files
 rule do_mdmap:
