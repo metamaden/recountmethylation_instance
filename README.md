@@ -372,7 +372,7 @@ additional compilation files. The full list of compilation rules, in their recom
 6. `get_h5db_gr`: Make an HDF5 database `.h5` file containing the Beta-values (DNAm fractions).
 7. `get_h5se_gr`: Make an HDF5-SummarizedExperiment `h5se` file containing the Beta-values (DNAm fractions).
 
-You could run the above from an active R session with:
+You could run the above from an active R session by running `R` and then entering the following:
 
 ```
 library(recountmethylation.pipeline)
@@ -385,7 +385,7 @@ get_h5db_gr()
 get_h5se_gr()
 ```
 
-You could also use the following one-liner to call the steps in their recommended order:
+You could also run the following one-liner from your Terminal to call the steps in their recommended order:
 
 ```
 snakemake --cores 1 run_dnam_pipeline
