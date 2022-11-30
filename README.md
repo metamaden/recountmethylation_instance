@@ -471,6 +471,16 @@ snakemake --cores 1 make_md_final
 snakemake --cores 1 append_md
 ```
 
+You could also accomplish the above by running `R` and then entering the following:
+
+```
+library(recountmethylation.pipeline)
+get_mdmap()
+get_mddnam()
+md_agg()
+append_md()
+```
+
 # Additional resources
 
 If you find `recountmethylation_instance` useful, the following resources may also be helpful.
