@@ -391,8 +391,7 @@ snakemake --cores 1 process_soft
 snakemake --cores 1 apply_jsonfilt
 ```
 
-As an example, a sample of the metadata for sample `GSM4671807` that were extracted from its experiment SOFT 
-and stored at `./gsm_soft/` appears as:
+As an example, SOFT-extracted metadata for `GSM4671807` would be stored at `./gsm_soft/` and look something like:
 
 ```
 !Sample_title = K562 - control 1
@@ -411,7 +410,7 @@ and stored at `./gsm_soft/` appears as:
 !Sample_characteristics_ch1 = treatment: control
 ```
 
-By contrast, the JSON-formatted version of `GSM4671807`'s metadata is located at `./gsm_json/` and appears as:
+By contrast, the JSON-formatted version of `GSM4671807`'s metadata would be stored at `./gsm_json/` and appear as:
 
 ```
 [
