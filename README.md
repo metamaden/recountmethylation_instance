@@ -478,7 +478,7 @@ library(recountmethylation.pipeline)
 get_mdmap()
 get_mddnam()
 md_agg()
-append_md()
+append_md_snakemake()
 ```
 
 # Additional resources
