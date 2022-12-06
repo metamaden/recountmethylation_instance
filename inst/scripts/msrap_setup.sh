@@ -4,7 +4,7 @@
 # 
 # Sets up the MetaSRA-pipeline fork for python3. Run this after cloning from 
 # GitHub:
-# > git clone https://github.com/sh-ikeda/MetaSRA-pipeline
+# > git clone https://github.com/metamaden/MetaSRA-pipeline
 # 
 # 
 
