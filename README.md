@@ -448,7 +448,24 @@ By contrast, the JSON-formatted version of `GSM4671807`'s metadata would be stor
 ]
 ```
 
-This JSON formatting is important because it allows the file to be read by the `MetaSRA-pipeline`.
+And finally the filtered JSON file for `GSM4671807`, stored at `./gsm_jsonfilt/`, looks like:
+
+```{r}
+[
+{
+  "!Sample_characteristics_ch1": "cell line: K562",
+  "!Sample_characteristics_ch1.1": "disease: chronic myelogenous leukemia",
+  "!Sample_characteristics_ch1.2": "treatment: control",
+  "!Sample_source_name_ch1": "control replicate 1",
+  "!Sample_title": "K562 - control 1"
+}
+]
+```
+
+This JSON formatting is important because it allows the file to be read by the `MetaSRA-pipeline`. We also
+apply a filter on metadata fields such as `!Sample_treatment_protocol_ch1` which are likely to be repeated 
+across samples. This can help ensure the pipeline maps characteristics which differentiate samples within
+the same experiment, rather than mapping the same terms to every sample in a given experiment.
 
 Once the `.json` files with sample-specific metadata have been prepared, you have the option of running
 any of the following available metadata processing rules:
